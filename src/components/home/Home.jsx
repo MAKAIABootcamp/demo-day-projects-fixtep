@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
+import { Button, Carousel } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 //import { images } from "../../services/data";
 
@@ -74,10 +74,10 @@ const Home = () => {
             Encuentra la persona ideal <br /> para tu necesidad actual
           </h1>
         </div>
+        <button>
+          Nuestros contratistas <br /> te ayudarán
+        </button>
       </div>
-
-      <div>imagen backgraund</div>
-      <div>dos botones: uno que redireccione a los contratistas </div>
     </>
   );
 };
