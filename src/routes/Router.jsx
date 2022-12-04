@@ -6,6 +6,8 @@ import Footer from "../components/home/Footer";
 import Home from "../components/home/Home";
 import Navbar from "../components/home/Navbar";
 import LoginAdmin from "../components/LoginAdmin";
+import Login from "../components/loginAndRegis/Login";
+import Register from "../components/loginAndRegis/Register";
 
 const Router = () => {
   return (
@@ -15,7 +17,9 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
-        <Route path="/login" element={<LoginAdmin />} />
+        <Route path="/loginAdmin" element={<LoginAdmin />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="register" element={<Register />}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

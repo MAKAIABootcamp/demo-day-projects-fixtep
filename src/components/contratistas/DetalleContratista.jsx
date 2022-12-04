@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from 'react-bootstrap/Card';
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Cita from "./Cita";
 // "https://previews.123rf.com/images/dolgachov/dolgachov1610/dolgachov161012005/64860816-profesi%C3%B3n-carpinter%C3%ADa-ebanister%C3%ADa-y-el-concepto-de-la-gente-carpintero-con-tablones-de-madera-martil.jpg"
 
 const DetalleContratista = () => {
@@ -53,6 +54,7 @@ const DetalleContratista = () => {
           <Card.Img variant="top" src="https://previews.123rf.com/images/dolgachov/dolgachov1610/dolgachov161012005/64860816-profesi%C3%B3n-carpinter%C3%ADa-ebanister%C3%ADa-y-el-concepto-de-la-gente-carpintero-con-tablones-de-madera-martil.jpg" />
         </Card>
       </div>
+      <Cita/>
     </div>
   );
 };

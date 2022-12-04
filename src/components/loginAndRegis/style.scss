@@ -1,0 +1,24 @@
+.login{
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    gap: 15px;
+    &__form{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        input{
+            border: none;
+            outline: none;
+        }
+        button{
+            border: none;
+        }
+    }
+}
