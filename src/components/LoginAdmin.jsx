@@ -3,7 +3,7 @@ import React from 'react'
 const LoginAdmin = () => {
   return (
     <div>
-      admin
+      <h1>Bienvenido</h1>
     </div>
   )
 }
