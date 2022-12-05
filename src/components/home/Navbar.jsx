@@ -18,6 +18,7 @@ const Navbar = () => {
         <img src={logo} alt="s" />
       </Nav.Item>
       <Nav.Item className="right">
+        <Nav.Link href="/login">login</Nav.Link>
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contratistas">Contratistas</Nav.Link>
         <Button onClick={onCloseSession}>Cerrar sesión</Button>

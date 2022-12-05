@@ -3,7 +3,8 @@ import { userReducer } from "../reducers/userReducers";
 import { workerReducer } from "../reducers/workerReducer";
 
 const reducer = {
-    user: userReducer,
+    //user: userReducer,
+    userStore: userReducer,
     contratistaStore: workerReducer,
 };
 

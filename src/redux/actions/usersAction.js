@@ -21,9 +21,9 @@ export const actionRegisterAsync = ({ email, password, name }) => {
                         email,
                         name,
                         accessToken,
-                        error: false,
                         admin: true, 
-                        provider: 'emailPassword'
+                        provider: 'emailPassword',
+                        error: false,
                     })
                 );
             })
@@ -54,10 +54,10 @@ export const actionLoginAsync = ({ email, password }) => {
           console.log(user.auth.currentUser) 
           dispatch(
             actionLoginSync({
-                admin,
               email,
               name: displayName,
               accessToken,
+              admin,
               error: false,
             })
           );
@@ -98,3 +98,25 @@ export const actionLoginAsync = ({ email, password }) => {
       type: userTypes.USER_LOGOUT,
     };
   };
+
+  // const docRef=doc(dataBase,`usuarios/${uid}`)
+  // setDoc(docRef,{email:email,rol:"usuario",name:displayName,phoneNumber,avatar: photoURL})
+
+  // const traerInfo= async(uid,accessToken)=>{
+  //   const docRef=doc(dataBase,`usuarios/${uid}`)
+  //   const docu= await getDoc(docRef)
+  //   const dataFinal= docu.data()
+  //   console.log(uid);
+  //  console.log(dataFinal);
+  //  dispatch(
+  //   actionSignPhoneSync({
+  //     name: dataFinal.name,
+  //     email:dataFinal.email,
+  //     accessToken,
+  //     phoneNumber:dataFinal.phoneNumber,
+  //     avatar: dataFinal.avatar,
+  //     uid,
+  //     admin:dataFinal.admin,
+  //     error: false,
+  //     address:dataFinal.address
+  //   })

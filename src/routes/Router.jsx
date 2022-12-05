@@ -15,7 +15,8 @@ import { actionLoginAsync } from "../redux/actions/usersAction";
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
-  const userStore = useSelector((store) => store.user);
+  //const userStore = useSelector((store) => store.user);
+  const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -59,8 +60,8 @@ const Router = () => {
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
         <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/Login" element={<Login/>}/>
-        <Route path="register" element={<Register />}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register />}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
