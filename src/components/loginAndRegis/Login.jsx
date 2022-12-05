@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { actionLoginAsync } from "../../redux/actions/usersAction";
 import "./style.scss";
-
 const Login = () => {
   const {
     register,
@@ -17,8 +16,7 @@ const Login = () => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.userStore);
-
+  const { error, errorMessage, user } = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmit = (data) => {
@@ -43,11 +41,9 @@ const Login = () => {
         />
         <button type="submit">Iniciar sesión</button>
       </form>
-
       <span>¿No tienes cuenta?</span>
       <Link to="/register">Registrate</Link>
     </div>
   );
 };
-
 export default Login;
