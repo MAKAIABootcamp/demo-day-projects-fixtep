@@ -12,35 +12,37 @@ import Login from "../components/loginAndRegis/Login";
 import Register from "../components/loginAndRegis/Register";
 import { auth } from "../firebase/firebaseConfig";
 import { actionLoginAsync } from "../redux/actions/usersAction";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   //const userStore = useSelector((store) => store.user);
-  const userStore = useSelector((store) => store.userStore);
+  const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch()
-
+const [userAdmin, setUserAdmin] = useState(false)
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user?.uid) {
+      if (user?.id) {
         setIsLoggedIn(true);
         if (Object.entries(userStore).length === 0) {
           const {
             displayName,
             email,
             accessToken,
-            admin,
           } = user.auth.currentUser;
           dispatch(
             actionLoginAsync({
               name: displayName,
               email,
               accessToken,
-              admin,
               error: false,
             })
           );
         }
-
+        if (user?.admin){
+          setUserAdmin(true)
+          console.log('Hola admin');
+        }
 
       } else {
         setIsLoggedIn(false);
@@ -57,9 +59,10 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
+        <Route path="/loginAdmin" element={<LoginAdmin />} />
+        {/* <Route element={<PrivateRouter isAutentication={userAdmin} />}></Route> */}
       </Routes>
       <Footer/>
     </BrowserRouter>

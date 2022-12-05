@@ -67,7 +67,7 @@ const Navbar = ({ isAutentication }) => {
         ) : (
           <></>
         )}
-        {/* <Button onClick={onCloseSession}>Cerrar sesión</Button> */}
+        <Button onClick={onCloseSession}>Cerrar sesión</Button>
       </Nav.Item>
     </Nav>
   );

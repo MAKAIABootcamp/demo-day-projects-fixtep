@@ -14,13 +14,14 @@ const Register = () => {
   } = useForm();
 
   const dispatch = useDispatch();
-  const { error, errorMessage } = useSelector((store) => store.userStore);
+  const { error, errorMessage } = useSelector((store) => store.user);
 
   const onSubmit = async (data) => {
     console.log(data);
     const user = {
       name: data.name,
       email: data.email,
+      admin: data.admin,
       password: data.password,
      
     }
