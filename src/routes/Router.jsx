@@ -28,7 +28,6 @@ const Router = () => {
             displayName,
             email,
             accessToken,
-            uid,
             admin,
           } = user.auth.currentUser;
           dispatch(
@@ -36,7 +35,6 @@ const Router = () => {
               name: displayName,
               email,
               accessToken,
-              uid,
               admin,
               error: false,
             })
@@ -54,7 +52,7 @@ const Router = () => {
   }, [setIsLoggedIn, dispatch, userStore]);
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar isAutentication={isLoggedIn}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details/:name" element={<DetalleContratista />} />

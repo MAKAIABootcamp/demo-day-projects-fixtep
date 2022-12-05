@@ -14,14 +14,14 @@ export const actionRegisterAsync = ({ email, password, name }) => {
                 await updateProfile(auth.currentUser, {
                     displayName: name,
                 });
-                const docRef = await addDoc(collection(database, collectionName), { name, email, accessToken, admin: true, provider: 'emailPassword' });
+                const docRef = await addDoc(collection(database, collectionName), { name, email, accessToken, admin: false, provider: 'emailPassword' });
                 dispatch(
                     actionRegisterSync({
                         id: docRef.id,
                         email,
                         name,
                         accessToken,
-                        admin: true, 
+                        admin: false, 
                         provider: 'emailPassword',
                         error: false,
                     })

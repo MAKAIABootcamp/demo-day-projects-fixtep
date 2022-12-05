@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { actionLoginAsync } from '../../redux/actions/usersAction';
 import './style.scss';
 
 const Login = () => {
+  const navigate = useNavigate()
 
   const {
     register,
@@ -18,13 +19,14 @@ const Login = () => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.userStore);
+  const { error, errorMessage, } = useSelector((store) => store.userStore);
+  
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+
   const onSubmit = (data) => {
     console.log(data);
-    dispatch(actionLoginAsync(data.email, data.password));
+    dispatch(actionLoginAsync(data));
     if (error) {
       Swal.fire("Oops!", `Ha ocurrido un error: ${errorMessage}`, "error");
     } else {

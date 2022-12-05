@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { actionLogoutAsync } from "../../redux/actions/usersAction";
 import logo from "./assets/fixtepGrande.svg";
 
-const Navbar = () => {
+const Navbar = ({ isAutentication }) => {
   const navigate = useNavigate()
     const dispatch = useDispatch();
   const onCloseSession = () => {
@@ -21,7 +21,15 @@ const Navbar = () => {
         <Nav.Link href="/login">login</Nav.Link>
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/contratistas">Contratistas</Nav.Link>
-        <Button onClick={onCloseSession}>Cerrar sesión</Button>
+        <Nav.Link href="/loginAdmin">Admin</Nav.Link>
+        {
+          isAutentication ? (
+            <Button onClick={onCloseSession}>Cerrar sesión</Button>
+          ) : (
+            <></>
+          )
+        }
+        {/* <Button onClick={onCloseSession}>Cerrar sesión</Button> */}
       </Nav.Item>
     </Nav>
   );
