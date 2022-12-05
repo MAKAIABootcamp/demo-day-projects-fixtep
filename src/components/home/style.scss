@@ -110,4 +110,9 @@ body {
       }
     }
   }
+  .imgCarrusel {
+    width: 100%;
+    //height: 200vh;
+    object-fit: cover;
+  }
 }
