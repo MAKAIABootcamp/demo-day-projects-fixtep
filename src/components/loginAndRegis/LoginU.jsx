@@ -7,7 +7,6 @@ import { actionLoginAsync } from '../../redux/actions/usersAction';
 import './style.scss';
 
 const Login = () => {
-  const navigate = useNavigate()
 
   const {
     register,
@@ -19,11 +18,10 @@ const Login = () => {
       password: "",
     },
   });
-  const { error, errorMessage, } = useSelector((store) => store.userStore);
-  
+  const { error, errorMessage, user } = useSelector((store) => store.userStore);
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   const onSubmit = (data) => {
     console.log(data);
     dispatch(actionLoginAsync(data));
@@ -34,6 +32,8 @@ const Login = () => {
       navigate('/contratistas')
     }
   };
+
+  
   return (
     <div className='login'>
       <h3>Inicia sesión</h3>
