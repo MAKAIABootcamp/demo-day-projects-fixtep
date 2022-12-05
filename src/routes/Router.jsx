@@ -8,7 +8,7 @@ import Footer from "../components/home/Footer";
 import Home from "../components/home/Home";
 import Navbar from "../components/home/Navbar";
 import LoginAdmin from "../components/LoginAdmin";
-import LoginU from "../components/loginAndRegis/LoginU";
+import Login from "../components/loginAndRegis/Login";
 import Register from "../components/loginAndRegis/Register";
 import { auth } from "../firebase/firebaseConfig";
 import { actionLoginAsync } from "../redux/actions/usersAction";
@@ -58,7 +58,7 @@ const Router = () => {
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
         <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/login" element={<LoginU/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
       </Routes>
       <Footer/>
