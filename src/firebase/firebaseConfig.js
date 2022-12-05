@@ -1,9 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+  FacebookAuthProvider,
+  getAuth,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { GoogleAuthProvider } from "firebase/auth";
-import { FacebookAuthProvider } from "firebase/auth";
 //import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,13 +23,13 @@ import { FacebookAuthProvider } from "firebase/auth";
 // };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXsk57mXh8s-Z3xJGAQY_WNNE7GYYyQUk",
-  authDomain: "fir-day-fc14d.firebaseapp.com",
-  projectId: "fir-day-fc14d",
-  storageBucket: "fir-day-fc14d.appspot.com",
-  messagingSenderId: "894447125691",
-  appId: "1:894447125691:web:12ff00ca0f936fbb69d59e",
-  measurementId: "G-3VRD8XXC5M"
+  apiKey: "AIzaSyAbPN26dconA9qta8CnC6kt_du9XoL87Gk",
+  authDomain: "contratistas-41e0c.firebaseapp.com",
+  projectId: "contratistas-41e0c",
+  storageBucket: "contratistas-41e0c.appspot.com",
+  messagingSenderId: "346105690764",
+  appId: "1:346105690764:web:18bbe21c23b8b88ed359a9",
+  measurementId: "G-F5RCSE6KGQ",
 };
 
 // Initialize Firebase
