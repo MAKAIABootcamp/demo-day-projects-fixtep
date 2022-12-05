@@ -46,6 +46,7 @@ const Register = () => {
       </form>
       <span>¿Ya tienes cuenta?</span>
       <Link to='/login'>Inicia sesión</Link>
+
     </div>
   )
 }
