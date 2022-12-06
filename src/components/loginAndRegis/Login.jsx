@@ -28,7 +28,10 @@ const Login = () => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.user);
+  const { error, errorMessage } = useSelector((store) => store.userStore);
+
+  // const userSesion = sessionStorage.setItem("user", user);
+  // console.log(userSesion)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

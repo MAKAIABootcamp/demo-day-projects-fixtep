@@ -55,6 +55,7 @@ export const actionLoginAsync = ({ email, password }) => {
           const userAdmin = await validateAdmin(email);
           console.log(userAdmin);
           console.log(user.auth.currentUser) 
+          sessionStorage.setItem("user", JSON.stringify(userAdmin));
           dispatch(
             actionLoginSync({
               email,
