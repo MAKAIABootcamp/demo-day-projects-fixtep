@@ -1,31 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-const LoginAdmin = (isAdmin) => {
-  const user = useSelector((store) => store.user);
-console.log(user);
+const LoginAdmin = () => {
 
-const [admim, setAdmim] = useState(true)
+//   useEffect(() => {
+//     userAdmin();
+//    }, []);
 
-const adminLogged = ()=>{
-  if(user.email === "anac.rojas88@gmail.com"){
-   console.log('Es admin');
-  }else{
+  const navigate = useNavigate();
+  const userLogin = sessionStorage.getItem("user")
+    ? JSON.parse(sessionStorage.getItem("user"))
+    : false;
+
+  if (userLogin.admin === true){
+    console.log('es admin')
+  } else{
     console.log('no es admin');
+    //navigate('/contratistas')
   }
-}
-
-useEffect(() => {
-adminLogged();
-  
-}, [])
-  // useEffect(() => {
-  //   if (user.admin) {
-  //     console.log('es administrador')
-  //   } else {
-  //     console.log('no es admin')
-  //   }
-  //  }, [user]);
+   
   return (
     <div>
       {isAdmin? (

@@ -17,11 +17,7 @@ import PrivateRouter from "./PrivateRouter";
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   //const userStore = useSelector((store) => store.user);
-  const userStore = useSelector((store) => store.user);
-  // console.log(userStore);
-
-  const userSesion = sessionStorage.setItem("user", userStore);
-console.log(userSesion);
+  const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch()
 const [userAdmin, setUserAdmin] = useState(false)
   useEffect(() => {
@@ -45,7 +41,6 @@ const [userAdmin, setUserAdmin] = useState(false)
         }
         if (user?.admin){
           setUserAdmin(true)
-          console.log('Hola admin');
         }
 
       } else {
