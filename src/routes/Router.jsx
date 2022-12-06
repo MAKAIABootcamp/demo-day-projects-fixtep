@@ -18,6 +18,10 @@ const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   //const userStore = useSelector((store) => store.user);
   const userStore = useSelector((store) => store.user);
+  // console.log(userStore);
+
+  const userSesion = sessionStorage.setItem("user", userStore);
+console.log(userSesion);
   const dispatch = useDispatch()
 const [userAdmin, setUserAdmin] = useState(false)
   useEffect(() => {
@@ -61,7 +65,7 @@ const [userAdmin, setUserAdmin] = useState(false)
         <Route path="/contratistas" element={<Contratistas />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
+        <Route isAdmin={userAdmin} path="/loginAdmin" element={<LoginAdmin />} />
         {/* <Route element={<PrivateRouter isAutentication={userAdmin} />}></Route> */}
       </Routes>
       <Footer/>

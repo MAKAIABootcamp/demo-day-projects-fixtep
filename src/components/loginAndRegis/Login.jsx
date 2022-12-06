@@ -28,8 +28,9 @@ const Login = () => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.user);
-
+  const { error, errorMessage, user } = useSelector((store) => store.user);
+  console.log(user);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmit = (data) => {

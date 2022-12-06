@@ -35,7 +35,7 @@ const Contratistas = () => {
         onClick={() => {
           dispatch(actionGetWorkerAsync());
         }}
-        variant="secondary"
+        variant="outline-secondary"
       >
         Todos
       </Button>
