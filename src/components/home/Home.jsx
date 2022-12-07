@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Carousel } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
 //import { images } from "../../services/data";
 
 import logo from "./assets/logoConLetrasGrande.svg";
@@ -65,17 +66,24 @@ const Home = () => {
         </Carousel>
       </div>
       <div className="mainContainer">
-        <div className="logo">
+        {/* <div className="logo">
           <img src={logo} alt="s" />
-        </div>
+        </div> */}
         <div className="litleTitle">
-          <h6>HACEMOS POSIBLE LA SOLUCIÓN DE TU PROBLEMA</h6>
+          <h6>
+            <strong>
+              Profesionales de confianza hacen posible la solución de tu
+              problema
+            </strong>
+          </h6>
+
           <h1>
-            Encuentra la persona ideal <br /> para tu necesidad actual
+            Encuentra la <strong>persona ideal</strong> para <br /> tu necesidad
+            actual
           </h1>
         </div>
         <button>
-          Nuestros contratistas <br /> te ayudarán
+          Encuentra nuestros <br /> servicios
         </button>
       </div>
     </>

@@ -1,9 +1,13 @@
 .Nav {
+  .navLink {
+    text-decoration: none;
+    color: black;
+  }
+
   display: flex;
-  background-color: #f57622;
+  background-color: #f5aa56;
   justify-content: space-between;
-  height: 100px;
-  color: #ebe2d8;
+  //height: 100px;
 
   align-items: center;
 
@@ -18,16 +22,46 @@
       height: 100px;
     }
   }
+  .navbar-collapse {
+    flex-grow: 0;
+  }
   .right {
     margin-right: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    Button {
+      background-color: transparent;
+      border-color: white;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-image: -webkit-linear-gradient(
+        45deg,
+        #f57622 50%,
+        transparent 50%
+      );
+      background-image: linear-gradient(45deg, #f57622 50%, transparent 50%);
+      background-position: 100%;
+      background-size: 400%;
+      -webkit-transition: background 300ms ease-in-out;
+      transition: background 300ms ease-in-out;
+    }
+    button:hover {
+      background-position: 0;
+    }
+  }
+  a {
+    color: black;
+    text-decoration: none;
   }
 }
+
 .imgCarrusel {
   width: 115%;
-  height: 200vh;
+  object-fit: cover;
+  filter: brightness(50%);
+
+  //height: 200vh;
 }
 .carouselImg {
   position: absolute;
@@ -40,10 +74,11 @@
   width: 50%;
   display: flex;
   margin: 0 auto;
+
   align-items: center;
   flex-direction: column;
-  backdrop-filter: blur(7px);
-  height: 200vh;
+  //backdrop-filter: blur(7px);
+  height: 152vh;
   .logo {
     img {
       width: 500px;
@@ -56,21 +91,29 @@
       text-align: center;
       font-size: 15px;
       font-weight: bold 300;
-      color: black;
+      color: white;
+      margin-top: 20%;
     }
     h1 {
       text-align: center;
       font-size: 60px;
-      color: black;
+      color: white;
     }
   }
   button {
+    .buttonLinkHome {
+      text-decoration: none;
+    }
+
     width: 200px;
     height: 100px;
+    color: #ebe2d8;
+    font-size: 20px;
     //justify-content: center;
-    background-color: #7b798c;
+    background-color: transparent;
     cursor: pointer;
-    border: none;
+    border-color: white;
+    border: 2px solid #fff;
     border-radius: 10px;
     background-image: -webkit-linear-gradient(
       45deg,

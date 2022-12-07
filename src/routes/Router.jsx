@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contratistas from "../components/contratistas/Contratistas";
 import DetalleContratista from "../components/contratistas/DetalleContratista";
 import Footer from "../components/home/Footer";
+import HeaderNav from "../components/home/HeaderNav";
 import Home from "../components/home/Home";
-import Navbar from "../components/home/Navbar";
 import LoginAdmin from "../components/LoginAdmin";
 import Login from "../components/loginAndRegis/Login";
 import Register from "../components/loginAndRegis/Register";
@@ -17,19 +17,15 @@ const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   //const userStore = useSelector((store) => store.user);
   const userStore = useSelector((store) => store.userStore);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user?.uid) {
         setIsLoggedIn(true);
         if (Object.entries(userStore).length === 0) {
-          const {
-            displayName,
-            email,
-            accessToken,
-            admin,
-          } = user.auth.currentUser;
+          const { displayName, email, accessToken, admin } =
+            user.auth.currentUser;
           dispatch(
             actionLoginAsync({
               name: displayName,
@@ -40,28 +36,23 @@ const Router = () => {
             })
           );
         }
-
-
       } else {
         setIsLoggedIn(false);
       }
-
-    }
-
-    );
+    });
   }, [setIsLoggedIn, dispatch, userStore]);
   return (
     <BrowserRouter>
-      <Navbar isAutentication={isLoggedIn}/>
+      <HeaderNav isAutentication={isLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
         <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register />}/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 };
