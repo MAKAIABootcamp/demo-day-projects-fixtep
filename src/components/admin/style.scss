@@ -1,0 +1,57 @@
+.deleteEditCard {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: space-around;
+
+    .des {
+        width: 280px;
+        height: 350px;
+        border: 1px solid gray;
+        border-radius: 15px;
+
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        h4 {
+            text-align: center;
+            color: #111110;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: space-between;
+
+            .btnDelete {
+                border: none;
+                width: 100px; 
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(243, 69, 69);
+                    color: white;
+                }
+            }
+            .btnEdit{
+                border: none;
+                width: 100px;  
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(71, 59, 245);
+                    color: white;
+                }
+            }
+           
+           
+        }
+    }
+}

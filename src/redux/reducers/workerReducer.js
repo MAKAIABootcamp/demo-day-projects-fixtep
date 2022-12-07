@@ -16,6 +16,13 @@ export const workerReducer = (state= workerState, action) => {
                 ...state,
                 contratista: action.payload.contratista
             };
+            case workerTypes.DELETE_WORKER:
+                return{
+                    ...state,
+                    contratista: state.contratista.filter((cont) => 
+                        cont.id !== action.payload.id
+                    ) 
+                }
         default:
             return state ;
     }

@@ -24,25 +24,25 @@ export const actionAddWorkerAsync = (contratista) => {
     };
   };
 
-  export const actionDeleteWorkerAsync =(contratista) => {
-    return  async (dispatch) => {
-        const workerRef = doc(database, collectionName, contratista.id)
-        try {
-            await deleteDoc(workerRef);
-            dispatch(actionDeleteWorkerSync(contratista))
-        } catch (error) {
-            console.log(error);
-            dispatch(actionDeleteWorkerSync({
-                error: true,
-                errorMessage: error.message
-            }))
-        }        
-    }
-}
+//   export const actionDeleteWorkerAsync =(contratista) => {
+//     return  async (dispatch) => {
+//         const workerRef = doc(database, collectionName, contratista.id)
+//         try {
+//             await deleteDoc(workerRef);
+//             dispatch(actionDeleteWorkerSync(contratista))
+//         } catch (error) {
+//             console.log(error);
+//             dispatch(actionDeleteWorkerSync({
+//                 error: true,
+//                 errorMessage: error.message
+//             }))
+//         }        
+//     }
+// }
 
-const actionDeleteWorkerSync = (contratista) => {
-    return {
-        type: adminTypes.DELETE_WORKER,
-        payload: {id: contratista.id}
-    }
-}
+// const actionDeleteWorkerSync = (contratista) => {
+//     return {
+//         type: adminTypes.DELETE_WORKER,
+//         payload: {id: contratista.id}
+//     }
+// }
