@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { collection, doc, getDocs, query, where, updateDoc, addDoc } from "firebase/firestore"
 import { database, auth } from '../../firebase/firebaseConfig';
+import { validateAdmin } from "../../services/helpers";
 import { userTypes } from "../types/usersType";
 
 const collectionName = 'users';
@@ -49,15 +50,18 @@ const actionRegisterSync = (user) => {
 export const actionLoginAsync = ({ email, password }) => {
     return (dispatch) => {
       signInWithEmailAndPassword(auth, email, password)
-        .then(({ user }) => {
-          const { displayName, accessToken, admin} = user.auth.currentUser
+        .then(async({ user }) => {
+          const { displayName, accessToken} = user.auth.currentUser
+          const userAdmin = await validateAdmin(email);
+          console.log(userAdmin);
           console.log(user.auth.currentUser) 
+          sessionStorage.setItem("user", JSON.stringify(userAdmin));
           dispatch(
             actionLoginSync({
               email,
+              admin: userAdmin.admin,
               name: displayName,
               accessToken,
-              admin,
               error: false,
             })
           );

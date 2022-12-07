@@ -21,6 +21,7 @@ const Register = () => {
     const user = {
       name: data.name,
       email: data.email,
+      admin: data.admin,
       password: data.password,
      
     }
