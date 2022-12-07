@@ -22,9 +22,7 @@ const LoginAdmin = () => {
    
   return (
     <div>
-      {isAdmin? (
         <h1>Bienvenido admin </h1>
-      ):(<></>)}
       
     </div>
   )

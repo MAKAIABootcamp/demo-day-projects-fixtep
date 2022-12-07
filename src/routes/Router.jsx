@@ -2,6 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddWorker from "../components/admin/AddWorker";
 import Contratistas from "../components/contratistas/Contratistas";
 import DetalleContratista from "../components/contratistas/DetalleContratista";
 import Footer from "../components/home/Footer";
@@ -60,8 +61,9 @@ const [userAdmin, setUserAdmin] = useState(false)
         <Route path="/contratistas" element={<Contratistas />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />}/>
-        <Route isAdmin={userAdmin} path="/loginAdmin" element={<LoginAdmin />} />
+        <Route path="/loginAdmin" element={<LoginAdmin />} />
         {/* <Route element={<PrivateRouter isAutentication={userAdmin} />}></Route> */}
+        <Route path="/agregarContratista" element={<AddWorker/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

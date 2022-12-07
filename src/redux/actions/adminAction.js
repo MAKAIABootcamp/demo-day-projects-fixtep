@@ -1,5 +1,5 @@
 import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore"
-import {database} from '../../firebase/firebaseConfi';
+import {database} from '../../firebase/firebaseConfig';
 import { adminTypes } from "../types/adminTypes";
 
 const collectionName = 'contratistas';

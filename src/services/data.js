@@ -19,6 +19,34 @@ export const categoryWorker = [
   },
 ];
 
+export const inputList = [
+  {
+    label: "Nombre",
+    type: "text",
+    name: "name",
+  },
+  {
+    label: "Profesión",
+    type: "select",
+    name: "profession",
+  },
+  {
+    label: "Experiencia",
+    type: "textarea",
+    name: "expertise",
+  },
+  {
+    label: "Celular",
+    type: "textarea",
+    name: "phone",
+  },
+  {
+    label: "Imagen",
+    type: "file",
+    name: "image",
+  },
+];
+
 export const loginProvider = [
   {
     name: "google",
