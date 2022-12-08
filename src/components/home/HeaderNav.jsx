@@ -5,7 +5,7 @@ import {
   Form,
   Nav,
   Navbar,
-  NavDropdown,
+  NavDropdown
 } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   actionLoginAsync,
-  actionLogoutAsync,
+  actionLogoutAsync
 } from "../../redux/actions/usersAction";
 import logo from "./assets/fixtepGrande.svg";
 import logo2 from "./assets/logoConLetrasGrande.svg";
@@ -107,7 +107,7 @@ const HeaderNav = ({ isAutentication }) => {
                     <Form.Label onClick={handleClose}>
                       <Link to="/register">Registrate</Link>
                     </Form.Label>{" "}
-                    <br />
+                    <br />|
                     <Button
                       variant="outline-warning"
                       type="submit"
