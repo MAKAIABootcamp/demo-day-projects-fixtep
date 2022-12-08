@@ -53,8 +53,11 @@ const Router = () => {
         <Route path="/loginAdmin" element={<LoginAdmin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/agregarContratista" element={<AddWorker/>}/>
-        <Route path="/eliminarEditarContratistas" element={<DeleteEditWorker/>}/>
+        <Route path="/agregarContratista" element={<AddWorker />} />
+        <Route
+          path="/eliminarEditarContratistas"
+          element={<DeleteEditWorker />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
