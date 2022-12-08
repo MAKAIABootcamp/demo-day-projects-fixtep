@@ -1,5 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddWorker from "../components/admin/AddWorker";
@@ -18,22 +19,24 @@ import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
+  const [check, setCheck] = useState(true);
   //const userStore = useSelector((store) => store.user);
-  const userStore = useSelector((store) => store.user);
+  const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user?.id) {
+      if (user?.uid) {
         setIsLoggedIn(true);
         if (Object.entries(userStore).length === 0) {
-          const { displayName, email, accessToken, admin } =
+          const { displayName, email, accessToken, uid } =
             user.auth.currentUser;
           dispatch(
             actionLoginAsync({
               name: displayName,
               email,
               accessToken,
+              uid,
               error: false,
             })
           );
@@ -41,8 +44,17 @@ const Router = () => {
       } else {
         setIsLoggedIn(false);
       }
+      setCheck(false)
     });
   }, [setIsLoggedIn, dispatch, userStore]);
+
+  if (check) {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
   return (
     <BrowserRouter>
       <HeaderNav isAutentication={isLoggedIn} />
@@ -55,6 +67,7 @@ const Router = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/agregarContratista" element={<AddWorker/>}/>
         <Route path="/eliminarEditarContratistas" element={<DeleteEditWorker/>}/>
+        <Route path='/editarContratista/:id' element={<AddWorker/>} />
       </Routes>
       <Footer />
     </BrowserRouter>

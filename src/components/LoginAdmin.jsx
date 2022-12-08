@@ -16,14 +16,17 @@ const LoginAdmin = () => {
   if (userLogin.admin === true){
     console.log('es admin')
   } else{
-    console.log('no es admin');
-    //navigate('/contratistas')
+    //console.log('no es admin');
+    navigate('/contratistas')  
   }
    
   return (
     <div>
-        <h1>Bienvenido admin </h1>
-      
+        <h1>Bienvenido admin </h1> 
+        <button onClick={() => {
+          navigate('/agregarContratista'); }}>Agregar contratista</button>
+        <button onClick={() => {
+          navigate('/eliminarEditarContratistas'); }}>Ver todos los contratistas</button>
     </div>
   )
 }

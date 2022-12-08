@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { actionDeleteWorkerAsync, actionGetWorkerAsync } from '../../redux/actions/workerAction';
 import "./style.scss";
 
 const DeleteEditWorker = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { contratista } = useSelector((store) => store.contratistaStore);
     useEffect(() => {
         dispatch(actionGetWorkerAsync());
@@ -28,7 +30,9 @@ const DeleteEditWorker = () => {
             }} >
               Delete
             </button>
-            <button className='btnEdit'>Editar</button>
+            <button className='btnEdit' onClick={() => {
+                    navigate(`/editarContratista/${contratista.id}`);
+                  }}>Editar</button>
             </div>
           </article>
           
