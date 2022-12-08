@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from "firebase/firestore"
 import {database} from '../../firebase/firebaseConfig';
 import { adminTypes } from "../types/adminTypes";
 
@@ -23,6 +23,32 @@ export const actionAddWorkerAsync = (contratista) => {
       payload: contratista,
     };
   };
+
+  export const actionEditWorkerAsync = (contratistaEdit) => {
+    return async (dispatch) => {
+        const contratistaRef = doc(database, collectionName, contratistaEdit.id)
+        try {
+            await updateDoc(contratistaRef, contratistaEdit);
+            dispatch(actionEditWorkerSync({
+                id: contratistaRef.id, 
+                ...contratistaEdit
+            }))
+        } catch (error) {
+            console.log(error)
+            // dispatch(actionEditPaletasSync({
+            //     error: true,
+            //     errorMessage: error.message
+            // }))
+        }       
+    }
+}
+
+const actionEditWorkerSync = (contratistaEdit) => {
+    return {
+        type: adminTypes.EDIT_WORKER,
+        payload: {...contratistaEdit}
+    }
+}
 
 //   export const actionDeleteWorkerAsync =(contratista) => {
 //     return  async (dispatch) => {

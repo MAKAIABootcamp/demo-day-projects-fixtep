@@ -1,5 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddWorker from "../components/admin/AddWorker";
@@ -14,26 +15,29 @@ import Login from "../components/loginAndRegis/Login";
 import Register from "../components/loginAndRegis/Register";
 import { auth } from "../firebase/firebaseConfig";
 import { actionLoginAsync } from "../redux/actions/usersAction";
+import DashBoardRouter from "./DashBoardRouter";
 import PrivateRouter from "./PrivateRouter";
+import PublicRouter from "./PublicRouter";
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
-  //const userStore = useSelector((store) => store.user);
-  const userStore = useSelector((store) => store.user);
+  const [check, setCheck] = useState(true);
+  const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user?.id) {
+      if (user?.uid) {
         setIsLoggedIn(true);
         if (Object.entries(userStore).length === 0) {
-          const { displayName, email, accessToken, admin } =
+          const { displayName, email, accessToken, uid } =
             user.auth.currentUser;
           dispatch(
             actionLoginAsync({
               name: displayName,
               email,
               accessToken,
+              uid,
               error: false,
             })
           );
@@ -41,23 +45,40 @@ const Router = () => {
       } else {
         setIsLoggedIn(false);
       }
+      setCheck(false)
     });
   }, [setIsLoggedIn, dispatch, userStore]);
+
+  if (check) {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
   return (
     <BrowserRouter>
       <HeaderNav isAutentication={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:name" element={<DetalleContratista />} />
-        <Route path="/contratistas" element={<Contratistas />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/agregarContratista" element={<AddWorker />} />
+      <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+        </Route>
+        
+        {/* <Route path="/details/:name" element={<DetalleContratista />} /> */}
+        {/* <Route path="/contratistas" element={<Contratistas isAutentication={isLoggedIn}/>} /> */}
+        {/* <Route path="/loginAdmin" element={<LoginAdmin />} /> */}
+        <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
+          <Route path="/*" element={<DashBoardRouter />} />
+        </Route>
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} /> */}
+        {/* <Route path="/agregarContratista" element={<AddWorker />} />
         <Route
           path="/eliminarEditarContratistas"
           element={<DeleteEditWorker />}
-        />
+        /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Lottie from "react-lottie";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/fixtep.svg";
@@ -12,10 +13,22 @@ import { categoryWorker } from "../../services/data";
 import "./contratistas.scss";
 // https://previews.123rf.com/images/dolgachov/dolgachov1610/dolgachov161012005/64860816-profesi%C3%B3n-carpinter%C3%ADa-ebanister%C3%ADa-y-el-concepto-de-la-gente-carpintero-con-tablones-de-madera-martil.jpg
 
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
 import animationData from "../../lotties/plumber.json";
 
 const Contratistas = () => {
+//   const userLogin = sessionStorage.getItem("user")
+//     ? JSON.parse(sessionStorage.getItem("user"))
+//     : false;
+// const [admin, setadmin] = useState(false);
+//   if (userLogin.admin === true){
+//     console.log('es admin')
+//     setadmin(true)
+//     // navigate('/agregarContratista')
+//   } else{
+//     console.log('no es admin');
+//   }
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -50,11 +63,13 @@ const Contratistas = () => {
       </div>
       <div className="worker">
         <div className="worker__buttons">
+        {/* {admin? (<Button onClick={() => {
+          navigate('/loginAdmin'); }}>Admin</Button>):(<></>)} */}
           <Button
             onClick={() => {
               dispatch(actionGetWorkerAsync());
             }}
-            variant="outline-secondary"
+            variant="secondary"
           >
             Todos
           </Button>
@@ -82,6 +97,7 @@ const Contratistas = () => {
                 key={index}
               >
                 <img src={item.image} />
+                <h5>{item.name}</h5>
                 <h4>{item.profession}</h4>
               </article>
             ))

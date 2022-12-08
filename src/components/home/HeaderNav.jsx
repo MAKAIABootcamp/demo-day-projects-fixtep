@@ -20,7 +20,8 @@ import logo from "./assets/fixtepGrande.svg";
 import logo2 from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
 
-const HeaderNav = ({ isAutentication }) => {
+const HeaderNav = ({ isAutentication }) => {   
+
   const {
     register,
     handleSubmit,
@@ -31,7 +32,7 @@ const HeaderNav = ({ isAutentication }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.user);
+  const { error, errorMessage } = useSelector((store) => store.userStore);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ const HeaderNav = ({ isAutentication }) => {
                 Servicios
               </Link>
             </Nav.Link>
-
+            {isAutentication ? (<Button onClick={onCloseSession }>Cerrar sesión</Button>):(<div></div>)}
             <NavDropdown
               title="Regístrate"
               id="basic-nav-dropdown"
@@ -121,7 +122,7 @@ const HeaderNav = ({ isAutentication }) => {
               {/* <Link to="/login" className="navLink">
                   Soy cliente
                 </Link> */}
-
+<Button onClick={onCloseSession }>Cerrar sesión</Button>
               <NavDropdown.Item>
                 <Link to="/loginAdmin" className="navLink">
                   Soy administrador
