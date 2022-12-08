@@ -17,6 +17,22 @@ export const categoryWorker = [
     label: "Electricista",
     value: 4,
   },
+  {
+    label: "Pintor",
+    value: 5,
+  },
+  {
+    label: "Cerrajero",
+    value: 6,
+  },
+  {
+    label: "Exterminador",
+    value: 7,
+  },
+  {
+    label: "Soldador",
+    value: 8,
+  },
 ];
 
 export const inputList = [
