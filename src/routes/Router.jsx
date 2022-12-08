@@ -15,13 +15,14 @@ import Login from "../components/loginAndRegis/Login";
 import Register from "../components/loginAndRegis/Register";
 import { auth } from "../firebase/firebaseConfig";
 import { actionLoginAsync } from "../redux/actions/usersAction";
+import DashBoardRouter from "./DashBoardRouter";
 import PrivateRouter from "./PrivateRouter";
+import PublicRouter from "./PublicRouter";
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const [check, setCheck] = useState(true);
-  //const userStore = useSelector((store) => store.user);
-  const userStore = useSelector((store) => store.userStore);
+  const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -59,15 +60,25 @@ const Router = () => {
     <BrowserRouter>
       <HeaderNav isAutentication={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:name" element={<DetalleContratista />} />
-        <Route path="/contratistas" element={<Contratistas />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/agregarContratista" element={<AddWorker/>}/>
-        <Route path="/eliminarEditarContratistas" element={<DeleteEditWorker/>}/>
-        <Route path='/editarContratista/:id' element={<AddWorker/>} />
+      <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+        </Route>
+        
+        {/* <Route path="/details/:name" element={<DetalleContratista />} /> */}
+        {/* <Route path="/contratistas" element={<Contratistas isAutentication={isLoggedIn}/>} /> */}
+        {/* <Route path="/loginAdmin" element={<LoginAdmin />} /> */}
+        <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
+          <Route path="/*" element={<DashBoardRouter />} />
+        </Route>
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} /> */}
+        {/* <Route path="/agregarContratista" element={<AddWorker />} />
+        <Route
+          path="/eliminarEditarContratistas"
+          element={<DeleteEditWorker />}
+        /> */}
       </Routes>
       <Footer />
     </BrowserRouter>

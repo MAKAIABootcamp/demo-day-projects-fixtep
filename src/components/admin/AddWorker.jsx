@@ -21,18 +21,18 @@ const schema = yup.object({
 
 const AddWorker = () => {
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userLogin = sessionStorage.getItem("user")
+    ? JSON.parse(sessionStorage.getItem("user"))
+    : false;
 
-  const { id } = useParams();
-  const { contratista, error } = useSelector((state) => state.contratistaStore);
-  const cont = contratista.find(item => item.id === id)
-  const defaulValues = {
-    name: cont ? cont.name : "",
-    profession: cont ? cont.profession : "",
-    expertise: cont ? cont.expertise : "",
-    phone: cont ? cont.phone : "",
-    //image: cont ? cont.image : ""
+  if (userLogin.admin === true){
+    console.log('es admin')
+    // navigate('/agregarContratista')
+  } else{
+    console.log('no es admin');
+    navigate('/contratistas')
   }
 
   const {
