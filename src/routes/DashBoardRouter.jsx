@@ -10,9 +10,10 @@ import LoginAdmin from '../components/LoginAdmin';
 const DashBoardRouter = () => {
 
   return (
-    <Routes>
+    <Routes> 
       <Route path="/contratistas" element={<Contratistas />} />
       <Route path="/agregarContratista" element={<AddWorker />} />
+      <Route path="/editarContratista/:id" element={<AddWorker />} />
       <Route path="/eliminarEditarContratistas" element={<DeleteEditWorker />} />
       <Route path="/details/:name" element={<DetalleContratista />} />
       <Route path="/loginAdmin" element={<LoginAdmin />} />

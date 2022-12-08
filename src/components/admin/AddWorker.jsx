@@ -23,6 +23,9 @@ const AddWorker = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { id } = useParams();
+    const { contratista, error } = useSelector((store) => store.contratistaStore);
+
     const userLogin = sessionStorage.getItem("user")
     ? JSON.parse(sessionStorage.getItem("user"))
     : false;
@@ -33,6 +36,15 @@ const AddWorker = () => {
   } else{
     console.log('no es admin');
     navigate('/contratistas')
+  }
+
+  const cont = contratista.find(item => item.id === id)
+  const defaulValues = {
+    name: cont ? cont.name : "",
+    profession: cont ? cont.profession : "",
+    expertise: cont ? cont.expertise : "",
+    phone: cont ? cont.phone : "",
+    //image: paleta ? paleta.image : ""
   }
 
   const {
