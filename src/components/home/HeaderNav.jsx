@@ -31,7 +31,7 @@ const HeaderNav = ({ isAutentication }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.userStore);
+  const { error, errorMessage } = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddWorker from "../components/admin/AddWorker";
+import DeleteEditWorker from "../components/admin/DeleteEditWorker";
 import Contratistas from "../components/contratistas/Contratistas";
 import DetalleContratista from "../components/contratistas/DetalleContratista";
 import Footer from "../components/home/Footer";
@@ -18,15 +19,16 @@ import PrivateRouter from "./PrivateRouter";
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   //const userStore = useSelector((store) => store.user);
-  const userStore = useSelector((store) => store.userStore);
+  const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const [userAdmin, setUserAdmin] = useState(false);
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user?.id) {
         setIsLoggedIn(true);
         if (Object.entries(userStore).length === 0) {
-          const { displayName, email, accessToken } = user.auth.currentUser;
+          const { displayName, email, accessToken, admin } =
+            user.auth.currentUser;
           dispatch(
             actionLoginAsync({
               name: displayName,
@@ -35,9 +37,6 @@ const Router = () => {
               error: false,
             })
           );
-        }
-        if (user?.admin) {
-          setUserAdmin(true);
         }
       } else {
         setIsLoggedIn(false);
@@ -51,11 +50,14 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
+        <Route path="/loginAdmin" element={<LoginAdmin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
-        {/* <Route element={<PrivateRouter isAutentication={userAdmin} />}></Route> */}
         <Route path="/agregarContratista" element={<AddWorker />} />
+        <Route
+          path="/eliminarEditarContratistas"
+          element={<DeleteEditWorker />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
