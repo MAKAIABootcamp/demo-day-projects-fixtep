@@ -131,14 +131,7 @@
   }
 }
 body {
-  background-image: linear-gradient(
-    to right top,
-    #ebe2d8,
-    #d7c4bf,
-    #bea8ac,
-    #a08f9d,
-    #7b798c
-  );
+  background-image: linear-gradient(to right top, #7b798c, #a08f9d, #bea8ac, #d7c4bf, #ebe2d8);
 }
 @media (max-width: 900px) {
   .mainContainer {

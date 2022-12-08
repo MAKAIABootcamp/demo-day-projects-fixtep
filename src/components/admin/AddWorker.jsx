@@ -23,6 +23,17 @@ const AddWorker = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const userLogin = sessionStorage.getItem("user")
+    ? JSON.parse(sessionStorage.getItem("user"))
+    : false;
+
+  if (userLogin.admin === true){
+    console.log('es admin')
+    // navigate('/agregarContratista')
+  } else{
+    console.log('no es admin');
+    navigate('/contratistas')
+  }
 
     const {
         register,

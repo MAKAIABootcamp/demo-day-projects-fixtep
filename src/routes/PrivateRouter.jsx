@@ -1,13 +1,8 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import LoginAdmin from '../components/LoginAdmin'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateRouter = () => {
-  return (
-    <Routes>
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
-    </Routes>
-  )
-}
+const PrivateRouter = ({ isAutentication }) => {
+  return <div>{isAutentication ? <Outlet /> : <Navigate to="/login" />}</div>;
+};
 
-export default PrivateRouter
+export default PrivateRouter;

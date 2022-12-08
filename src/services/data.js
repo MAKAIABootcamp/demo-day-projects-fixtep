@@ -75,3 +75,26 @@ export const loginProvider = [
     provider: facebook,
   },
 ];
+
+export const time = [
+  {
+    label: "8:00 am",
+    value: 1,
+  },
+  {
+    label: "10:00 am",
+    value: 2,
+  },
+  {
+    label: "1:00 pm",
+    value: 3,
+  },
+  {
+    label: "3:00 pm",
+    value: 4,
+  },
+  {
+    label: "5:00 pm",
+    value: 4,
+  }
+]
