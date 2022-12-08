@@ -51,6 +51,7 @@ const DetalleContratista = () => {
           <Modal.Title>Agendar cita</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Form>
           <input type="date" />
           <Form.Select
                   aria-label="Default select example"
@@ -66,6 +67,8 @@ const DetalleContratista = () => {
                     </option>
                   ))}
                 </Form.Select>
+                <input></input>
+                </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
