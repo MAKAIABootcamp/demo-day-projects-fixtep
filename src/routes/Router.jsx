@@ -19,28 +19,14 @@ const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   //const userStore = useSelector((store) => store.user);
   const userStore = useSelector((store) => store.userStore);
-<<<<<<< HEAD
   const dispatch = useDispatch();
-
-=======
-  const dispatch = useDispatch()
-const [userAdmin, setUserAdmin] = useState(false)
->>>>>>> 85055f80d6257a6cd7e166d08e64edeaca43dfc4
+  const [userAdmin, setUserAdmin] = useState(false);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user?.id) {
         setIsLoggedIn(true);
         if (Object.entries(userStore).length === 0) {
-<<<<<<< HEAD
-          const { displayName, email, accessToken, admin } =
-            user.auth.currentUser;
-=======
-          const {
-            displayName,
-            email,
-            accessToken,
-          } = user.auth.currentUser;
->>>>>>> 85055f80d6257a6cd7e166d08e64edeaca43dfc4
+          const { displayName, email, accessToken } = user.auth.currentUser;
           dispatch(
             actionLoginAsync({
               name: displayName,
@@ -50,13 +36,9 @@ const [userAdmin, setUserAdmin] = useState(false)
             })
           );
         }
-<<<<<<< HEAD
-=======
-        if (user?.admin){
-          setUserAdmin(true)
+        if (user?.admin) {
+          setUserAdmin(true);
         }
-
->>>>>>> 85055f80d6257a6cd7e166d08e64edeaca43dfc4
       } else {
         setIsLoggedIn(false);
       }
@@ -69,17 +51,11 @@ const [userAdmin, setUserAdmin] = useState(false)
         <Route path="/" element={<Home />} />
         <Route path="/details/:name" element={<DetalleContratista />} />
         <Route path="/contratistas" element={<Contratistas />} />
-<<<<<<< HEAD
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-=======
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register />}/>
         <Route path="/loginAdmin" element={<LoginAdmin />} />
         {/* <Route element={<PrivateRouter isAutentication={userAdmin} />}></Route> */}
-        <Route path="/agregarContratista" element={<AddWorker/>}/>
->>>>>>> 85055f80d6257a6cd7e166d08e64edeaca43dfc4
+        <Route path="/agregarContratista" element={<AddWorker />} />
       </Routes>
       <Footer />
     </BrowserRouter>
