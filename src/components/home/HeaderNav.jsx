@@ -32,7 +32,7 @@ const HeaderNav = ({ isAutentication }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.userStore);
+  const { error, errorMessage } = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ const HeaderNav = ({ isAutentication }) => {
                 Servicios
               </Link>
             </Nav.Link>
-            {isAutentication ? (<Button onClick={onCloseSession }>Cerrar sesión</Button>):(<div></div>)}
+            {isAutentication ? (<button onClick={onCloseSession }>Cerrar sesión</button>):(<div></div>)}
             <NavDropdown
               title="Regístrate"
               id="basic-nav-dropdown"
@@ -122,7 +122,6 @@ const HeaderNav = ({ isAutentication }) => {
               {/* <Link to="/login" className="navLink">
                   Soy cliente
                 </Link> */}
-<Button onClick={onCloseSession }>Cerrar sesión</Button>
               <NavDropdown.Item>
                 <Link to="/loginAdmin" className="navLink">
                   Soy administrador

@@ -22,12 +22,15 @@ const LoginAdmin = () => {
   }
    
   return (
-    <div>
-        <h1>Bienvenido admin </h1>
+    <div className='admin'>
+        <h2>Bienvenido administrador </h2>
+        <div className='admin__btn'>
         <button onClick={() => {
           navigate('/agregarContratista'); }}>Agregar contratista</button>
         <button onClick={() => {
           navigate('/eliminarEditarContratistas'); }}>Ver todos los contratistas</button>
+           <button>Ver citas agendadas</button>
+   </div>
     </div>
   )
 }
