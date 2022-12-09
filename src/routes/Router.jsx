@@ -22,7 +22,7 @@ import PublicRouter from "./PublicRouter";
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const [check, setCheck] = useState(true);
-  const userStore = useSelector((store) => store.userStore);
+  const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   useEffect(() => {

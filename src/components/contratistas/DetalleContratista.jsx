@@ -67,15 +67,23 @@ const DetalleContratista = () => {
                     </option>
                   ))}
                 </Form.Select>
-                <input></input>
+                <label>Nombre
+                <input type="text"/>
+                </label>
+                <label>Telefono
+                <input type="text"/>
+                </label>
+                <label>Dirección
+                <input type="text"/>
+                </label>
                 </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Cerrar
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Guardar
           </Button>
         </Modal.Footer>
       </Modal>

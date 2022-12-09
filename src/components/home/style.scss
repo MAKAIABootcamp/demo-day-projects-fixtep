@@ -2,6 +2,7 @@
   .navLink {
     text-decoration: none;
     color: black;
+   
   }
 
   display: flex;
@@ -151,4 +152,10 @@ body {
     //height: 200vh;
     object-fit: cover;
   }
+}
+
+button{
+  border: none;
+  background-color: transparent;
+
 }
