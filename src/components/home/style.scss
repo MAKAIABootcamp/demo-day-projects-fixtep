@@ -132,7 +132,8 @@
   }
 }
 body {
-  background-image: linear-gradient(to right top, #7b798c, #a08f9d, #bea8ac, #d7c4bf, #ebe2d8);
+  // background-image: linear-gradient(to right top, #7b798c, #a08f9d, #bea8ac, #d7c4bf, #ebe2d8);
+  background-color: white;
 }
 @media (max-width: 900px) {
   .mainContainer {
@@ -158,4 +159,17 @@ button{
   border: none;
   background-color: transparent;
 
+}
+.facebook{
+  display: flex;
+  flex-direction: column;
+  img{
+    width: 40px;
+    height: 40px;
+  }
+}
+.contactos{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
 }

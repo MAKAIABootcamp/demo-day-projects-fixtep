@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { adminReducer } from "../reducers/adminReducer";
+import { trabajosReducer } from "../reducers/trabajosReducer";
 import { userReducer } from "../reducers/userReducers";
 import { workerReducer } from "../reducers/workerReducer";
 
@@ -7,7 +8,8 @@ const reducer = {
     //user: userReducer,
     user: userReducer,
     contratistaStore: workerReducer,
-    adminStore: adminReducer
+    adminStore: adminReducer,
+    imagenes: trabajosReducer
 };
 
 const store = configureStore({

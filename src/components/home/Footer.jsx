@@ -9,8 +9,18 @@ const Footer = () => {
         <img src={logo} alt="s" />
       </Nav.Item>
       <Nav.Item >
-        <div>Contactanos</div>
-        <div>Admin</div>
+        <div className='facebook'>
+          <span>Siguenos en:</span>
+          <img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png" alt="Facebook" />
+        </div>
+      </Nav.Item>
+      <Nav.Item >
+        <div className='contactos'>
+          <span>Contactanos</span>
+         <span>3034567856</span>
+         <span>fixtep@gmail.com</span>
+          </div>
+
       </Nav.Item>
     </Nav>
   )

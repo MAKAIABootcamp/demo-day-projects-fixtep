@@ -2,25 +2,33 @@ import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Card from "react-bootstrap/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Cita from "./Cita";
 import { time } from "../../services/data";
 import { Form } from "react-bootstrap";
+import Trabajos from "./Trabajos";
+import { actionGetTrabajosAsync } from "../../redux/actions/trabajosAction";
 const images = require.context("./assets/img", true);
 
 // "https://previews.123rf.com/images/dolgachov/dolgachov1610/dolgachov161012005/64860816-profesi%C3%B3n-carpinter%C3%ADa-ebanister%C3%ADa-y-el-concepto-de-la-gente-carpintero-con-tablones-de-madera-martil.jpg"
 
 const DetalleContratista = () => {
   const { name } = useParams();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     getWorkerInfo();
+    // getDetailsTrabajos();
   }, []);
 
   const [infoWorker, setInfoWorker] = useState();
   const contratista = useSelector((store) => store.contratistaStore);
-
+  const   info  = useSelector((store) => store.imagenes);
+  console.log(info);
+  useEffect(() => {
+    dispatch(actionGetTrabajosAsync());
+  }, [dispatch]);
+  
   const getWorkerInfo = () => {
     const workerData = contratista.contratista.slice();
     const tempWorker = workerData.find(
@@ -28,6 +36,13 @@ const DetalleContratista = () => {
     );
     setInfoWorker(tempWorker);
   };
+
+  const [detailTrabajos, setDetailTrabajos] = useState()
+  // const trabajosRealizados = info.filter(item => item.name === name)
+//   const getDetailsTrabajos = () => {
+//     const worker = info.trabajos.slice();
+//     setDetailTrabajos(trabajosRealizados)
+// }
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -92,8 +107,35 @@ const DetalleContratista = () => {
       ) : (
         <div>no haz seleccionado un contratista</div>
       )}
-
-      <div className="details__work">
+      {/* <div>
+         {trabajosRealizados && trabajosRealizados.length ? (
+            trabajosRealizados.map((item, index) => (
+              <article key={index}>
+                <img src={item.image1} />
+                <img src={item.image2} />
+                <img src={item.image3} />
+              </article>
+              
+            ))
+          ) : (
+            <div>no hay trabajos</div>
+          )}
+    </div> */}
+       {/* <div>
+         {trabajosRealizados ? (
+            
+        <div className="trabajos">
+                <img src={trabajosRealizados.image1} />
+                <img src={trabajosRealizados.image2} />
+                <img src={trabajosRealizados.image3} />
+                </div>
+              
+          ) : (
+            <div>no hay trabajos</div>
+          )}
+    </div> */}
+    {/* <Trabajos/> */}
+      {/* <div className="details__work">
         <Card style={{ width: "14rem", height: "50%" }}>
           <Card.Img variant="top" src={images(`./trabajo1.jpg`)} />
         </Card>
@@ -107,7 +149,7 @@ const DetalleContratista = () => {
           <Card.Img variant="top" src={images(`./trabajo4.jpg`)} />
         </Card>
       </div>
-      <Cita />
+      <Cita /> */}
     </div>
   );
 };

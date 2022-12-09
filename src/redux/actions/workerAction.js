@@ -86,3 +86,8 @@ const actionDeleteWorkerSync = (contratista) => {
         payload: {id: contratista.id}
     }
 }
+
+
+
+
+

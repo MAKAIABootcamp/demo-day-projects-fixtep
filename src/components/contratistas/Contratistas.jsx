@@ -49,6 +49,8 @@ const Contratistas = () => {
 
   const { contratista } = useSelector((store) => store.contratistaStore);
   console.log(contratista);
+  const  info  = useSelector((store) => store.imagenes);
+  console.log(info);
 
   const onFiltered = (searchValue) => {
     const searchParam = "profession";

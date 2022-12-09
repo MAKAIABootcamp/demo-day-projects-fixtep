@@ -70,19 +70,23 @@ const HeaderNav = ({ isAutentication }) => {
                 Inicio
               </Link>
             </Nav.Link>
-            <Nav.Link>
-              <Link to="/contratistas" className="navLink">
-                Servicios
-              </Link>
-            </Nav.Link>
-            {isAutentication ? (<button onClick={onCloseSession }>Cerrar sesión</button>):(<div></div>)}
+         
+            {isAutentication ? (
+              <>
+                 <Nav.Link>
+                 <Link to="/contratistas" className="navLink">
+                   Servicios
+                 </Link>
+               </Nav.Link>
+            <button onClick={onCloseSession }>Cerrar sesión</button></>)
+            :(<div></div>)}
             <NavDropdown
-              title="Regístrate"
+              title="Iniciar Sesión"
               id="basic-nav-dropdown"
               className="navLink"
             >
               <NavDropdown.Item onClick={handleShow}>
-                Soy cliente
+                Iniciar Sesión
               </NavDropdown.Item>
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -108,7 +112,7 @@ const HeaderNav = ({ isAutentication }) => {
                     <Form.Label onClick={handleClose}>
                       <Link to="/register">Registrate</Link>
                     </Form.Label>{" "}
-                    <br />|
+                    <br />
                     <Button
                       variant="outline-warning"
                       type="submit"
@@ -123,9 +127,7 @@ const HeaderNav = ({ isAutentication }) => {
                   Soy cliente
                 </Link> */}
               <NavDropdown.Item>
-                <Link to="/loginAdmin" className="navLink">
-                  Soy administrador
-                </Link>
+              <Link to="/register">Registrarse</Link>
               </NavDropdown.Item>
 
               <NavDropdown.Divider />

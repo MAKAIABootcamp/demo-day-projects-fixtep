@@ -1,7 +1,7 @@
 import { workerTypes } from "../types/workerTypes";
 
 const workerState = {
-    contratista: []
+    contratista: [],
 }
 
 export const workerReducer = (state= workerState, action) => {
@@ -22,7 +22,8 @@ export const workerReducer = (state= workerState, action) => {
                     contratista: state.contratista.filter((cont) => 
                         cont.id !== action.payload.id
                     ) 
-                }
+                };
+
         default:
             return state ;
     }
