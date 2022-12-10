@@ -1,11 +1,58 @@
 import React from 'react';
 import Modal from "react-bootstrap/Modal";
-import { Form } from "react-bootstrap";
+import { Form, FloatingLabel } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
-import { time } from "../../services/data";
+import { citaList, time } from "../../services/data";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { actionAddCitaAsync } from '../../redux/actions/citasAction';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const Cita = ({ isShow, onClose }) => {
+
+  const schema = yup.object({
+    //date: yup.date().required("Debe seleccionar una fecha"),
+    time: yup
+      .string()
+      .required("Debe seleccionar una hora"),
+    phone: yup.string().required("Debe ingresar su celular"),
+    direction: yup.string().required("Debe ingresar su direccion"),
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data) => {
+    const newCita = {
+      date: data.date,
+      time: data.time,
+      //userName: data.userName,
+      phone: data.phone,
+      direction: data.direction,
+      //workerName: data.workerName,
+    };
+    console.log(newCita);
+    // dispatch(actionAddCitaAsync(newCita));
+    // Swal.fire(
+    //     "Se ha agendado la cita",
+    //     "success"
+    //   )      
+    //navigate("/contratista");
+
+  };
+
   return (
     <>
       <Modal show={isShow} onHide={onClose} animation={false}>
@@ -13,47 +60,47 @@ const Cita = ({ isShow, onClose }) => {
           <Modal.Title>Agendar cita</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <input type="date" />
-            <Form.Select aria-label="Default select example">
-              <option value="">Selecciona una hora</option>
-              {time.map((item) => (
-                <option
-                  key={item.value}
-                  value={item.label}
-                  className="text-capitalize"
-                >
-                  {item.label}
-                </option>
-              ))}
-            </Form.Select>
-            <br />
-            <InputGroup size="sm" className="mb-3">
-              <InputGroup.Text id="inputGroup-sizing-sm">Teléfono</InputGroup.Text>
-              <Form.Control
-                aria-label="Small"
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </InputGroup>
-            <InputGroup size="sm" className="mb-3">
-              <InputGroup.Text id="inputGroup-sizing-sm">Dirección</InputGroup.Text>
-              <Form.Control
-                aria-label="Small"
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </InputGroup>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <input type="date" name='date' {...register('date')}/>
+            {citaList.map((item, index) => {
+              if (item.type === "select") {
+                return (
+                  <FloatingLabel key={index} label={item.label} className="mb-3">
+                    <Form.Select
+                      aria-label="Default select example"
+                      {...register(item.name)}
+                    >
+                      <option value="">Selecciona una hora</option>
+                      {time.map((item) => (
+                        <option
+                          key={item.value}
+                          value={item.label}
+                          className="text-capitalize"
+                        >
+                          {item.label}
+                        </option>
+                      ))}
+                    </Form.Select>
+                    <p>{errors[item.name]?.message}</p>
+                  </FloatingLabel>
+                );
+              }
+              if (item.type === "textarea") {
+                return (
+                  <FloatingLabel key={index} label={item.label} className="mb-3">
+                    <Form.Control as="textarea" {...register(item.name)} />
+                    <p>{errors[item.name]?.message}</p>
+                  </FloatingLabel>
+                );
+              }
+            })}
+            <Button variant="warning" type="submit" className="mb-3">
+              Agendar cita
+            </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" type='submit'>
-            Guardar cambios
-          </Button>
-        </Modal.Footer>
       </Modal>
-      </>
+    </>
   )
 }
 

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { adminReducer } from "../reducers/adminReducer";
+import { citaReducer } from "../reducers/citasReduccer";
 import { trabajosReducer } from "../reducers/trabajosReducer";
 import { userReducer } from "../reducers/userReducers";
 import { workerReducer } from "../reducers/workerReducer";
@@ -9,7 +10,8 @@ const reducer = {
     userStore: userReducer,
     contratistaStore: workerReducer,
     adminStore: adminReducer,
-    imagenes: trabajosReducer
+    imagenes: trabajosReducer,
+    citaStore: citaReducer
 };
 
 const store = configureStore({
