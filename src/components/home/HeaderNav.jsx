@@ -32,7 +32,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.userStore);
+  const { error, errorMessage } = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
   const onCloseSession = () => {
     dispatch(actionLogoutAsync());
-    navigate('/register');
+    navigate('/');
   };
   const [show, setShow] = useState(false);
 
@@ -66,9 +66,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink to="/" className="navLink">
-                Inicio
-            </NavLink>
+           
             {isAutentication ? (
               <>
                 <NavLink to="/contratistas"  className="navLink">
@@ -81,11 +79,16 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                 ) : (
                   <></>
                 )}
-                <button onClick={onCloseSession}>Cerrar sesión</button></>
+                <NavLink to="/" onClick={onCloseSession} >Cerrar sesión</NavLink></>
 
             )
 
-              : (<div>
+              : (<div className="NavInicio">
+                <div className="inicio">
+                 <NavLink to="/" className="navLink">
+                Inicio
+            </NavLink>
+            </div>
                 <NavDropdown
                   title="Iniciar Sesión"
                   id="basic-nav-dropdown"

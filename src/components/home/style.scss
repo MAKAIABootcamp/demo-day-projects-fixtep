@@ -2,6 +2,7 @@
   .navLink {
     text-decoration: none;
     color: black;
+    margin-right: 10px;
    
   }
 
@@ -141,6 +142,13 @@ body {
   //   #ffffff
   // );
   background-color: #ebe2d8;
+}
+.NavInicio{
+  display: flex;
+  justify-items: center;
+  .inicio{
+    margin-top: 8px;
+  }
 }
 @media (max-width: 900px) {
   .mainContainer {

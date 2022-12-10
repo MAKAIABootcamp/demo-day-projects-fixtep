@@ -4,7 +4,7 @@ import { Form, FloatingLabel } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
 import { citaList, time } from "../../services/data";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { actionAddCitaAsync } from '../../redux/actions/citasAction';
 import Swal from 'sweetalert2';
@@ -12,8 +12,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-const Cita = ({ isShow, onClose }) => {
-
+const Cita = ({ isShow, onClose, isWorker }) => {
+  const { contratista } = useSelector((store) => store.contratistaStore);
+  console.log(contratista);
+  const userLogin = sessionStorage.getItem("user")
+    && JSON.parse(sessionStorage.getItem("user"));
   const schema = yup.object({
     //date: yup.date().required("Debe seleccionar una fecha"),
     time: yup
@@ -38,18 +41,19 @@ const Cita = ({ isShow, onClose }) => {
     const newCita = {
       date: data.date,
       time: data.time,
-      //userName: data.userName,
+      userName: userLogin.name,
       phone: data.phone,
-      direction: data.direction,
-      //workerName: data.workerName,
+      address: data.direction,
+      workerName: isWorker.name,
+      profession: isWorker.profession
     };
     console.log(newCita);
-    // dispatch(actionAddCitaAsync(newCita));
-    // Swal.fire(
-    //     "Se ha agendado la cita",
-    //     "success"
-    //   )      
-    //navigate("/contratista");
+    dispatch(actionAddCitaAsync(newCita));
+    Swal.fire(
+        "Se ha agendado la cita",
+        "success"
+      )      
+    navigate("/contratista");
 
   };
 
@@ -61,7 +65,7 @@ const Cita = ({ isShow, onClose }) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <input type="date" name='date' {...register('date')}/>
+            <input className='date' type="date" name='date' {...register('date')}/>
             {citaList.map((item, index) => {
               if (item.type === "select") {
                 return (

@@ -64,6 +64,7 @@ const Contratistas = () => {
         <Lottie options={defaultOptions} height={300} width={300} />{" "}
       </div>
       <div className="worker">
+        <span>Selecciona uno de los contratistas para ver su perfil y agendar una cita, también puedes filtrar por los botones</span>
         <div className="worker__buttons">
         {/* {admin? (<Button onClick={() => {
           navigate('/loginAdmin'); }}>Admin</Button>):(<></>)} */}

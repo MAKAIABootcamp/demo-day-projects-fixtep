@@ -17,6 +17,7 @@ export const actionGetCitaAsync = () => {
                 });
             });
             console.log(cita);
+            sessionStorage.setItem("citas", JSON.stringify(cita));
         } catch (error) {
             console.log(error);
         }finally{
