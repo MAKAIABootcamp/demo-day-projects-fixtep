@@ -3,8 +3,10 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { actionGetTrabajosAsync } from "../../redux/actions/trabajosAction";
+import store from "../../redux/store/store";
 import { time } from "../../services/data";
 import Cita from "./Cita";
 const images = require.context("./assets/img", true);
@@ -13,13 +15,20 @@ const images = require.context("./assets/img", true);
 
 const DetalleContratista = () => {
   const { name } = useParams();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     getWorkerInfo();
+    getImgTrabajos();
   }, []);
+
+  useEffect(() => {
+    dispatch(actionGetTrabajosAsync());
+  }, [dispatch]);
 
   const [infoWorker, setInfoWorker] = useState();
   const contratista = useSelector((store) => store.contratistaStore);
+  const imgTrabajos = useSelector((store) => store.imagenes);
+  console.log(imgTrabajos);
 
   const getWorkerInfo = () => {
     const workerData = contratista.contratista.slice();
@@ -27,6 +36,14 @@ const DetalleContratista = () => {
       (contratista) => contratista.name === name
     );
     setInfoWorker(tempWorker);
+  };
+  const [infoImg, setInfoImg] = useState();
+  const getImgTrabajos = () => {
+    const imgData = imgTrabajos.trabajo.slice();
+    const img = imgData.find(
+      (imgTrabajos) => imgTrabajos.name === name
+    );
+    setInfoImg(img);
   };
   const [show, setShow] = useState(false);
 
@@ -83,8 +100,14 @@ const DetalleContratista = () => {
         ) : (
           <div>no haz seleccionado un contratista</div>
         )}
-
-        <div className="details__work">
+        {infoImg ? (
+            <div className="trabajos">
+             <img src={infoImg.image1} />
+             <img src={infoImg.image2} />
+             <img src={infoImg.image3} />
+             </div>
+        ):(<></>)}
+        {/* <div className="details__work">
           <Card style={{ width: "14rem", height: "50%" }}>
             <Card.Img variant="top" src={images(`./trabajo1.jpg`)} />
           </Card>
@@ -98,7 +121,7 @@ const DetalleContratista = () => {
             <Card.Img variant="top" src={images(`./trabajo4.jpg`)} />
           </Card>
         </div>
-        <Cita />
+        <Cita /> */}
       </div>
     </>
   );

@@ -49,7 +49,7 @@ const HeaderNav = ({ isAutentication }) => {
 
   const onCloseSession = () => {
     dispatch(actionLogoutAsync());
-    navigate("/");
+    navigate('/register');
   };
   const [show, setShow] = useState(false);
 
@@ -79,8 +79,8 @@ const HeaderNav = ({ isAutentication }) => {
                  </Link>
                </Nav.Link>
             <button onClick={onCloseSession }>Cerrar sesión</button></>)
-            :(<div></div>)}
-            <NavDropdown
+            :(<div>
+               <NavDropdown
               title="Iniciar Sesión"
               id="basic-nav-dropdown"
               className="navLink"
@@ -133,6 +133,8 @@ const HeaderNav = ({ isAutentication }) => {
               <NavDropdown.Divider />
               <NavDropdown.Item></NavDropdown.Item>
             </NavDropdown>
+            </div>)}
+           
           </Nav>
         </Navbar.Collapse>
       </Container>

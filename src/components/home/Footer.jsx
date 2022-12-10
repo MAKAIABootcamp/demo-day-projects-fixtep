@@ -11,7 +11,10 @@ const Footer = () => {
       <Nav.Item >
         <div className='facebook'>
           <span>Siguenos en:</span>
+          <div className='imgFooter'>
           <img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png" alt="Facebook" />
+          <img src='https://i0.wp.com/eltallerdehector.com/wp-content/uploads/2022/06/cd939-logo-instagram-png.png?fit=512%2C512&ssl=1' alt='Instagram'/>
+          </div>
         </div>
       </Nav.Item>
       <Nav.Item >
