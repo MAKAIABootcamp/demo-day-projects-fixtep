@@ -73,7 +73,7 @@ const Home = () => {
           <h3>
             <strong>
               ¡Encuentra tu profesional ideal para que resuelva tu problema
-              tecnico!
+              técnico!
             </strong>
           </h3>
           <button
@@ -81,7 +81,7 @@ const Home = () => {
               navigate(`/contratistas`);
             }}
           >
-            Registrate, encuentra nuestros <br /> servicios y agenda tu cita
+            Regístrate, encuentra nuestros <br /> servicios y agenda tu cita
           </button>
         </div>
         <div className="right">
