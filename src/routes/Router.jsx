@@ -25,8 +25,9 @@ const Router = () => {
   const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
 
-  const userLogin = sessionStorage.getItem("user")
-    && JSON.parse(sessionStorage.getItem("user"));
+  const userLogin =
+    sessionStorage.getItem("user") &&
+    JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -48,7 +49,7 @@ const Router = () => {
       } else {
         setIsLoggedIn(false);
       }
-      setCheck(false)
+      setCheck(false);
     });
   }, [setIsLoggedIn, dispatch, userStore]);
 
@@ -61,14 +62,14 @@ const Router = () => {
   }
   return (
     <BrowserRouter>
-      <HeaderNav isAutentication={isLoggedIn} isAdmin={userLogin.admin}/>
+      <HeaderNav isAutentication={isLoggedIn} isAdmin={userLogin.admin} />
       <Routes>
-      <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
+        <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
         </Route>
-        
+
         {/* <Route path="/details/:name" element={<DetalleContratista />} /> */}
         {/* <Route path="/contratistas" element={<Contratistas isAutentication={isLoggedIn}/>} /> */}
         {/* <Route path="/loginAdmin" element={<LoginAdmin />} /> */}
