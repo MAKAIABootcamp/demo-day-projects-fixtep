@@ -55,3 +55,18 @@
         }
     }
 }
+.citasAgendadas{
+    width: 100%;
+    height: 440px;
+    padding: 20px;
+   
+    h2{
+        text-align: center;
+    }
+    .thead{
+        background-color: rgb(153, 147, 248);
+    }
+    .tbody{
+        background-color: white;
+    }
+}

@@ -29,7 +29,9 @@ const LoginAdmin = () => {
           navigate('/agregarContratista'); }}>Agregar contratista</button>
         <button onClick={() => {
           navigate('/eliminarEditarContratistas'); }}>Ver todos los contratistas</button>
-           <button>Ver citas agendadas</button>
+           <button onClick={() => {
+          navigate('/citasAgendadas'); }}>Ver citas agendadas</button>
+           
    </div>
     </div>
   )

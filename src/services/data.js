@@ -98,3 +98,21 @@ export const time = [
     value: 4,
   }
 ]
+
+export const citaList = [
+  {
+    label: "Hora",
+    type: "select",
+    name: "time",
+  },
+  {
+    label: "Celular",
+    type: "textarea",
+    name: "phone",
+  },
+  {
+    label: "Dirección",
+    type: "textarea",
+    name: "direction",
+  },
+];

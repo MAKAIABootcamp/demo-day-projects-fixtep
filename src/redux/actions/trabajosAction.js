@@ -17,6 +17,7 @@ export const actionGetTrabajosAsync = () =>{
                     ...doc.data(),
                 });
             });
+            sessionStorage.setItem("trabajos", JSON.stringify(trabajo));
         } catch (error) {
             console.error(error);
         }finally{

@@ -21,6 +21,9 @@ const DetalleContratista = () => {
     getImgTrabajos();
   }, []);
 
+  const dataTrabajos = sessionStorage.getItem("trabajos")
+    && JSON.parse(sessionStorage.getItem("trabajos"));
+    console.log(dataTrabajos);
   useEffect(() => {
     dispatch(actionGetTrabajosAsync());
   }, [dispatch]);
@@ -63,7 +66,7 @@ const DetalleContratista = () => {
               <Button variant="primary" onClick={handleShow}>
                 Agendar cita
               </Button>
-              <Cita isShow={show} onClose={handleClose}/>
+              <Cita isShow={show} onClose={handleClose} isWorker={infoWorker}/>
               
             </div>
           </article>

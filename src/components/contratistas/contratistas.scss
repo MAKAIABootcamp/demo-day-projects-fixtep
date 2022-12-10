@@ -10,7 +10,10 @@
   width: 100%;
   padding: 70px;
   gap: 25px;
-
+  span{
+    text-align: center;
+    font-size: 30px;
+  }
   &__logo {
     img {
       width: 100px;
@@ -123,4 +126,13 @@ img{
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
   rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
+}
+
+.date{
+  width: 465px;
+  height: 60px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid rgb(211, 210, 210);
+  padding: 10px;
 }
