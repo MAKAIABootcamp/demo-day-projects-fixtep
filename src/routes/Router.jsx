@@ -22,8 +22,11 @@ import PublicRouter from "./PublicRouter";
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const [check, setCheck] = useState(true);
-  const userStore = useSelector((store) => store.user);
+  const userStore = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
+
+  const userLogin = sessionStorage.getItem("user")
+    && JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -58,7 +61,7 @@ const Router = () => {
   }
   return (
     <BrowserRouter>
-      <HeaderNav isAutentication={isLoggedIn} />
+      <HeaderNav isAutentication={isLoggedIn} isAdmin={userLogin.admin}/>
       <Routes>
       <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />

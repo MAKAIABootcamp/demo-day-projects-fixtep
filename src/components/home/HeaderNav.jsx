@@ -10,7 +10,7 @@ import {
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   actionLoginAsync,
@@ -20,7 +20,7 @@ import logo from "./assets/fixtepGrande.svg";
 import logo2 from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
 
-const HeaderNav = ({ isAutentication }) => {   
+const HeaderNav = ({ isAutentication, isAdmin }) => {
 
   const {
     register,
@@ -32,7 +32,7 @@ const HeaderNav = ({ isAutentication }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.user);
+  const { error, errorMessage } = useSelector((store) => store.userStore);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -55,6 +55,7 @@ const HeaderNav = ({ isAutentication }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
     <Navbar className="Nav" expand="lg">
       <Container>
@@ -65,76 +66,81 @@ const HeaderNav = ({ isAutentication }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link>
-              <Link to="/" className="navLink">
+            <NavLink to="/" className="navLink">
                 Inicio
-              </Link>
-            </Nav.Link>
-         
+            </NavLink>
             {isAutentication ? (
               <>
-                 <Nav.Link>
-                 <Link to="/contratistas" className="navLink">
-                   Servicios
-                 </Link>
-               </Nav.Link>
-            <button onClick={onCloseSession }>Cerrar sesión</button></>)
-            :(<div>
-               <NavDropdown
-              title="Iniciar Sesión"
-              id="basic-nav-dropdown"
-              className="navLink"
-            >
-              <NavDropdown.Item onClick={handleShow}>
-                Iniciar Sesión
-              </NavDropdown.Item>
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Registrate o inicia sesión</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Control
-                        type="email"
-                        placeholder="Escribe tu email"
-                        {...register("email")}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Control
-                        type="password"
-                        placeholder="Escribe tu contraseña"
-                        {...register("password")}
-                      />
-                    </Form.Group>
-                    <Form.Label>¿No tienes cuenta?</Form.Label> <br />
-                    <Form.Label onClick={handleClose}>
-                      <Link to="/register">Registrate</Link>
-                    </Form.Label>{" "}
-                    <br />
-                    <Button
-                      variant="outline-warning"
-                      type="submit"
-                      onClick={handleClose}
-                    >
-                      Inicia sesión
-                    </Button>
-                  </Form>
-                </Modal.Body>
-              </Modal>
-              {/* <Link to="/login" className="navLink">
+                <NavLink to="/contratistas"  className="navLink">
+                  Servicios
+                </NavLink>
+                {isAdmin ? (
+                  <NavLink to="/loginAdmin" className="navLink">
+                    Administrador
+                  </NavLink>
+                ) : (
+                  <></>
+                )}
+                <button onClick={onCloseSession}>Cerrar sesión</button></>
+
+            )
+
+              : (<div>
+                <NavDropdown
+                  title="Iniciar Sesión"
+                  id="basic-nav-dropdown"
+                  className="navLink"
+                >
+                  <NavDropdown.Item onClick={handleShow}>
+                    Iniciar Sesión
+                  </NavDropdown.Item>
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Registrate o inicia sesión</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Form onSubmit={handleSubmit(onSubmit)}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Control
+                            type="email"
+                            placeholder="Escribe tu email"
+                            {...register("email")}
+                          />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                          <Form.Control
+                            type="password"
+                            placeholder="Escribe tu contraseña"
+                            {...register("password")}
+                          />
+                        </Form.Group>
+                        <Form.Label>¿No tienes cuenta?</Form.Label> <br />
+                        <Form.Label onClick={handleClose}>
+                          <Link to="/register">Registrate</Link>
+                        </Form.Label>{" "}
+                        <br />
+                        <Button
+                          variant="outline-warning"
+                          type="submit"
+                          onClick={handleClose}
+                        >
+                          Inicia sesión
+                        </Button>
+                      </Form>
+                    </Modal.Body>
+                  </Modal>
+                  {/* <Link to="/login" className="navLink">
                   Soy cliente
                 </Link> */}
-              <NavDropdown.Item>
-              <Link to="/register">Registrarse</Link>
-              </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Link to="/register">Registrarse</Link>
+                  </NavDropdown.Item>
 
-              <NavDropdown.Divider />
-              <NavDropdown.Item></NavDropdown.Item>
-            </NavDropdown>
-            </div>)}
-           
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item></NavDropdown.Item>
+                </NavDropdown>
+              </div>)}
+
           </Nav>
         </Navbar.Collapse>
       </Container>

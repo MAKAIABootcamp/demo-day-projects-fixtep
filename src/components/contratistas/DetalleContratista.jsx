@@ -63,38 +63,8 @@ const DetalleContratista = () => {
               <Button variant="primary" onClick={handleShow}>
                 Agendar cita
               </Button>
-
-              <Modal show={show} onHide={handleClose} animation={false}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Agendar cita</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Form>
-                    <input type="date" />
-                    <Form.Select aria-label="Default select example">
-                      <option value="">Selecciona una hora</option>
-                      {time.map((item) => (
-                        <option
-                          key={item.value}
-                          value={item.label}
-                          className="text-capitalize"
-                        >
-                          {item.label}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <input></input>
-                  </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
-                    Cerrar
-                  </Button>
-                  <Button variant="primary" onClick={handleClose}>
-                    Guardar cambios
-                  </Button>
-                </Modal.Footer>
-              </Modal>
+              <Cita isShow={show} onClose={handleClose}/>
+              
             </div>
           </article>
         ) : (
@@ -121,7 +91,7 @@ const DetalleContratista = () => {
             <Card.Img variant="top" src={images(`./trabajo4.jpg`)} />
           </Card>
         </div>
-        <Cita /> */}
+         */}
       </div>
     </>
   );
