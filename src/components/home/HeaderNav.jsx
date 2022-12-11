@@ -14,8 +14,10 @@ import { Link, useNavigate, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   actionLoginAsync,
-  actionLogoutAsync
+  actionLogoutAsync,
+  loginProviderAsync
 } from "../../redux/actions/usersAction";
+import { loginProvider } from "../../services/data";
 import logo from "./assets/fixtepGrande.svg";
 import logo2 from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
@@ -32,7 +34,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.user);
+  const { error, errorMessage } = useSelector((store) => store.userStore);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -56,6 +58,10 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleLoginGoogle = (provider) => {
+    dispatch(loginProviderAsync(provider))
+  }
+
   return (
     <Navbar className="Nav" expand="lg">
       <Container>
@@ -66,10 +72,10 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-           
+
             {isAutentication ? (
               <>
-                <NavLink to="/contratistas"  className="navLink">
+                <NavLink to="/contratistas" className="navLink">
                   Servicios
                 </NavLink>
                 {isAdmin ? (
@@ -85,10 +91,10 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
               : (<div className="NavInicio">
                 <div className="inicio">
-                 <NavLink to="/" className="navLink">
-                Inicio
-            </NavLink>
-            </div>
+                  <NavLink to="/" className="navLink">
+                    Inicio
+                  </NavLink>
+                </div>
                 <NavDropdown
                   title="Iniciar Sesión"
                   id="basic-nav-dropdown"
@@ -129,6 +135,17 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                         >
                           Inicia sesión
                         </Button>
+                        {loginProvider.map((provider, index) => (
+                          <img
+                            key={index}
+                            src={provider.image}
+                            alt={provider.name}
+                            style={{ width: "40px", cursor: "pointer" }}
+                            onClick={() => {
+                              handleLoginGoogle(provider.provider);
+                            }}
+                          />
+                        ))}
                       </Form>
                     </Modal.Body>
                   </Modal>

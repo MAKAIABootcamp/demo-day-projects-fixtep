@@ -7,7 +7,7 @@ import { workerReducer } from "../reducers/workerReducer";
 
 const reducer = {
     //user: userReducer,
-    user: userReducer,
+    userStore: userReducer,
     contratistaStore: workerReducer,
     adminStore: adminReducer,
     imagenes: trabajosReducer,

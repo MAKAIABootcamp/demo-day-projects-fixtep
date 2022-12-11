@@ -53,7 +53,7 @@ const Cita = ({ isShow, onClose, isWorker }) => {
         "Se ha agendado la cita",
         "success"
       )      
-    navigate("/contratista");
+    navigate("/contratistas");
 
   };
 

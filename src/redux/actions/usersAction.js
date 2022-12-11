@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { collection, doc, getDocs, query, where, updateDoc, addDoc } from "firebase/firestore"
 import { database, auth } from '../../firebase/firebaseConfig';
 import { validateAdmin } from "../../services/helpers";
@@ -103,24 +103,32 @@ export const actionLoginAsync = ({ email, password }) => {
     };
   };
 
-  // const docRef=doc(dataBase,`usuarios/${uid}`)
-  // setDoc(docRef,{email:email,rol:"usuario",name:displayName,phoneNumber,avatar: photoURL})
-
-  // const traerInfo= async(uid,accessToken)=>{
-  //   const docRef=doc(dataBase,`usuarios/${uid}`)
-  //   const docu= await getDoc(docRef)
-  //   const dataFinal= docu.data()
-  //   console.log(uid);
-  //  console.log(dataFinal);
-  //  dispatch(
-  //   actionSignPhoneSync({
-  //     name: dataFinal.name,
-  //     email:dataFinal.email,
-  //     accessToken,
-  //     phoneNumber:dataFinal.phoneNumber,
-  //     avatar: dataFinal.avatar,
-  //     uid,
-  //     admin:dataFinal.admin,
-  //     error: false,
-  //     address:dataFinal.address
-  //   })
+  export const loginProviderAsync = (provider) => {
+    return (dispatch) => {
+        signInWithPopup(auth, provider)
+        .then((result) =>{
+            const user = result.user;
+            console.log(user)
+            const {displayName, accessToken, photoURL, phoneNumber} = user.auth.currentUser;
+            //console.log(result.user);
+            dispatch(actionLoginSync({
+                email: user.email,
+                name: displayName,
+                accessToken,
+                avatar: photoURL,
+                phoneNumber,
+                error: false
+            }))
+        })
+        .catch((error) =>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData.email;
+            console.log(error);
+            console.log(errorCode);
+            console.log(errorMessage);
+            dispatch(actionLoginSync({ email, error: true, errorMessage }))
+        })
+    }
+}
+  
