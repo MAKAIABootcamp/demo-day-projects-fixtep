@@ -1,3 +1,4 @@
+<img src="https://user-images.githubusercontent.com/96261554/206931678-72ca6d04-d225-4e26-b9ae-5edbc7b818a4.png" width="40%">
 <h2>Este proyecto fue desarrollado con: </h2>
 -  ReactJS
 -  React Router Dom
@@ -24,3 +25,4 @@
 
 <h2>Autores </h2>
 <div> Juan Camilo Garcia Garcia - Daniela Alvarado Garcia - Ana Carina Rojas </div>
+
