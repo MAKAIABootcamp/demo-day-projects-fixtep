@@ -1,9 +1,10 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
+import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { actionLoginAsync } from "../../redux/actions/usersAction";
 import "./style.scss";
@@ -56,8 +57,8 @@ const Login = () => {
           placeholder="Contraseña"
           {...register("password")}
         />
-         <p>{errors.password?.message}</p>
-        <button type="submit">Iniciar sesión</button>
+        <p>{errors.password?.message}</p>
+        <Button type="submit">Iniciar sesión</Button>
       </form>
 
       <span>¿No tienes cuenta?</span>
