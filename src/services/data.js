@@ -33,6 +33,10 @@ export const categoryWorker = [
     label: "Soldador",
     value: 8,
   },
+  {
+    label: "Reparador",
+    value: 9,
+  },
 ];
 
 export const inputList = [
