@@ -5,23 +5,22 @@ import {
   Form,
   Nav,
   Navbar,
-  NavDropdown
+  NavDropdown,
 } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   actionLoginAsync,
-  actionLogoutAsync
+  actionLogoutAsync,
 } from "../../redux/actions/usersAction";
 import logo from "./assets/fixtepGrande.svg";
 import logo2 from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
 
 const HeaderNav = ({ isAutentication, isAdmin }) => {
-
   const {
     register,
     handleSubmit,
@@ -49,7 +48,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
   const onCloseSession = () => {
     dispatch(actionLogoutAsync());
-    navigate('/');
+    navigate("/");
   };
   const [show, setShow] = useState(false);
 
@@ -66,10 +65,9 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-           
             {isAutentication ? (
               <>
-                <NavLink to="/contratistas"  className="navLink">
+                <NavLink to="/contratistas" className="navLink">
                   Servicios
                 </NavLink>
                 {isAdmin ? (
@@ -79,16 +77,17 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                 ) : (
                   <></>
                 )}
-                <NavLink to="/" onClick={onCloseSession} >Cerrar sesión</NavLink></>
-
-            )
-
-              : (<div className="NavInicio">
+                <NavLink to="/" onClick={onCloseSession}>
+                  Cerrar sesión
+                </NavLink>
+              </>
+            ) : (
+              <div className="NavInicio">
                 <div className="inicio">
-                 <NavLink to="/" className="navLink">
-                Inicio
-            </NavLink>
-            </div>
+                  <NavLink to="/" className="navLink">
+                    Inicio
+                  </NavLink>
+                </div>
                 <NavDropdown
                   title="Iniciar Sesión"
                   id="basic-nav-dropdown"
@@ -110,7 +109,10 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                             {...register("email")}
                           />
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicPassword"
+                        >
                           <Form.Control
                             type="password"
                             placeholder="Escribe tu contraseña"
@@ -123,7 +125,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                         </Form.Label>{" "}
                         <br />
                         <Button
-                          variant="outline-warning"
+                          //variant="outline-warning"
                           type="submit"
                           onClick={handleClose}
                         >
@@ -132,9 +134,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                       </Form>
                     </Modal.Body>
                   </Modal>
-                  {/* <Link to="/login" className="navLink">
-                  Soy cliente
-                </Link> */}
+
                   <NavDropdown.Item>
                     <Link to="/register">Registrarse</Link>
                   </NavDropdown.Item>
@@ -142,8 +142,8 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                   <NavDropdown.Divider />
                   <NavDropdown.Item></NavDropdown.Item>
                 </NavDropdown>
-              </div>)}
-
+              </div>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

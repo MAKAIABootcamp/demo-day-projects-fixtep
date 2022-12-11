@@ -77,8 +77,9 @@ const Home = () => {
             </strong>
           </h3>
           <button
+            className="buttonHome"
             onClick={() => {
-              navigate(`/contratistas`);
+              navigate(`/register`);
             }}
           >
             Regístrate, encuentra nuestros <br /> servicios y agenda tu cita

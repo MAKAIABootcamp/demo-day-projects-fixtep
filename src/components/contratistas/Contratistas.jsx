@@ -17,17 +17,17 @@ import "./contratistas.scss";
 import animationData from "../../lotties/plumber.json";
 
 const Contratistas = () => {
-//   const userLogin = sessionStorage.getItem("user")
-//     ? JSON.parse(sessionStorage.getItem("user"))
-//     : false;
-// const [admin, setadmin] = useState(false);
-//   if (userLogin.admin === true){
-//     console.log('es admin')
-//     setadmin(true)
-//     // navigate('/agregarContratista')
-//   } else{
-//     console.log('no es admin');
-//   }
+  //   const userLogin = sessionStorage.getItem("user")
+  //     ? JSON.parse(sessionStorage.getItem("user"))
+  //     : false;
+  // const [admin, setadmin] = useState(false);
+  //   if (userLogin.admin === true){
+  //     console.log('es admin')
+  //     setadmin(true)
+  //     // navigate('/agregarContratista')
+  //   } else{
+  //     console.log('no es admin');
+  //   }
 
   const defaultOptions = {
     loop: true,
@@ -49,7 +49,7 @@ const Contratistas = () => {
 
   const { contratista } = useSelector((store) => store.contratistaStore);
   console.log(contratista);
-  const  info  = useSelector((store) => store.imagenes);
+  const info = useSelector((store) => store.imagenes);
   console.log(info);
 
   const onFiltered = (searchValue) => {
@@ -64,9 +64,12 @@ const Contratistas = () => {
         <Lottie options={defaultOptions} height={300} width={300} />{" "}
       </div>
       <div className="worker">
-        <span>Selecciona uno de los contratistas para ver su perfil y agendar una cita, también puedes filtrar por los botones</span>
+        <span>
+          Selecciona el contratista que necesites y agenda tu cita, también
+          puedes filtrar por los botones
+        </span>
         <div className="worker__buttons">
-        {/* {admin? (<Button onClick={() => {
+          {/* {admin? (<Button onClick={() => {
           navigate('/loginAdmin'); }}>Admin</Button>):(<></>)} */}
           <Button
             onClick={() => {
