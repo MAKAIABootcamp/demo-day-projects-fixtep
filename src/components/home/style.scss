@@ -3,7 +3,6 @@
     text-decoration: none;
     color: black;
     margin-right: 10px;
-   
   }
 
   display: flex;
@@ -63,7 +62,7 @@
   object-fit: cover;
   filter: brightness(50%);
 
-  //height: 200vh;
+  //height: 100vh;
 }
 .carouselImg {
   position: absolute;
@@ -73,12 +72,15 @@
 .mainContainer {
   position: relative;
   z-index: 2;
-  width: 50%;
+  //width: 50%;
   display: flex;
   margin: 0 auto;
+  padding: 30px;
+  //border: solid 5px blue;
 
-  align-items: center;
-  flex-direction: column;
+  //align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
   //backdrop-filter: blur(7px);
   height: 152vh;
   .logo {
@@ -88,48 +90,70 @@
       margin: 0 auto;
     }
   }
-  .litleTitle {
-    h6 {
+  .left {
+    //border: solid 5px blue;
+
+    //align-items: center;
+    h3 {
       text-align: center;
-      font-size: 15px;
+      font-size: 30px;
       font-weight: bold 300;
       color: white;
-      margin-top: 20%;
+      margin-top: 10%;
     }
     h1 {
       text-align: center;
       font-size: 60px;
       color: white;
+      margin-top: 10%;
     }
-  }
-  button {
-    .buttonLinkHome {
-      text-decoration: none;
-    }
+    button {
+      margin-top: 10%;
+      margin-left: 30%;
+      .buttonLinkHome {
+        text-decoration: none;
+      }
 
-    width: 200px;
-    height: 100px;
-    color: #ebe2d8;
-    font-size: 20px;
-    //justify-content: center;
-    background-color: transparent;
-    cursor: pointer;
-    border-color: white;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    background-image: -webkit-linear-gradient(
-      45deg,
-      #f57622 50%,
-      transparent 50%
-    );
-    background-image: linear-gradient(45deg, #f57622 50%, transparent 50%);
-    background-position: 100%;
-    background-size: 400%;
-    -webkit-transition: background 300ms ease-in-out;
-    transition: background 300ms ease-in-out;
+      width: 250px;
+      height: 150px;
+      color: #ebe2d8;
+      font-size: 20px;
+      //justify-content: center;
+      background-color: transparent;
+      cursor: pointer;
+      border-color: white;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background-image: -webkit-linear-gradient(
+        45deg,
+        #f57622 50%,
+        transparent 50%
+      );
+      background-image: linear-gradient(45deg, #f57622 50%, transparent 50%);
+      background-position: 100%;
+      background-size: 400%;
+      -webkit-transition: background 300ms ease-in-out;
+      transition: background 300ms ease-in-out;
+    }
+    button:hover {
+      background-position: 0;
+    }
   }
-  button:hover {
-    background-position: 0;
+  .right {
+    //border: solid 5px blue;
+    h3 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold 300;
+      color: white;
+      margin-top: 120%;
+    }
+    h2 {
+      text-align: center;
+      font-size: 40px;
+      color: #f5aa56;
+      margin-bottom: 10%;
+    }
   }
 }
 body {
@@ -143,15 +167,16 @@ body {
   // );
   background-color: #ebe2d8;
 }
-.NavInicio{
+.NavInicio {
   display: flex;
   justify-items: center;
-  .inicio{
+  .inicio {
     margin-top: 8px;
   }
 }
 @media (max-width: 900px) {
   .mainContainer {
+    width: 100%;
     .logo {
       img {
         width: 300px;
@@ -170,27 +195,25 @@ body {
   }
 }
 
-button{
+button {
   border: none;
   background-color: transparent;
-
 }
-.facebook{
+.facebook {
   display: flex;
   flex-direction: column;
-  .imgFooter{
+  .imgFooter {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    img{
+    img {
       width: 40px;
       height: 40px;
     }
   }
- 
 }
-.contactos{
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
+.contactos {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
 }
