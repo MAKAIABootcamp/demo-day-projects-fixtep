@@ -1,6 +1,4 @@
-# demo-day-projects-fixtep
-
-<h1>Este proyecto fue desarrollado con: </h1>
+<h2>Este proyecto fue desarrollado con: </h2>
 <span>- ReactJS </span>
 <span>- React Router Dom </span>
 <span>- React-Redux </span>
@@ -12,21 +10,17 @@
 <span>- Sweetalert2 </span>
 <span>- LottieFiles </span>
 
-<br />
-<h1>Instalación </h1>
-<br />
-<h2>Clonar repositorio: </h2>
-<div> git clone </div>
+<h2>Instalación </h2>
+<h3>Clonar repositorio: </h3>
+<div> git clone git@github.com:MAKAIABootcamp/demo-day-projects-fixtep.git</div>
 
-<h2>Instalación de dependencias </h2>
+<h3>Instalación de dependencias </h3>
 <div> npm install </div>
 
-<h2>Inicia el proyecto con: </h2>
+<h3>Inicia el proyecto con: </h3>
 <div> npm start </div>
 
-<br />
 <h1>Sitio web </h1>
 
-<br />
-<h1>Autores </h1>
+<h2>Autores </h2>
 <div> Juan Camilo Garcia Garcia - Daniela Alvarado Garcia - Ana Carina Rojas </div>
