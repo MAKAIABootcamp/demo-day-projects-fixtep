@@ -1,4 +1,5 @@
 <h2>Este proyecto fue desarrollado con: </h2>
+<div align="column">
 - ReactJS 
 - React Router Dom 
 - React-Redux 
@@ -9,6 +10,7 @@
 - Yup 
 - Sweetalert2 
 - LottieFiles 
+</div>
 
 <h2>Instalación </h2>
 <h3>Clonar repositorio: </h3>
