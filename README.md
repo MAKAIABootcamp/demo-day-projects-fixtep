@@ -20,7 +20,7 @@
 <h3>Inicia el proyecto con: </h3>
 <div> npm start </div>
 
-<h1>Sitio web </h1>
+<h2>Sitio web </h2>
 
 <h2>Autores </h2>
 <div> Juan Camilo Garcia Garcia - Daniela Alvarado Garcia - Ana Carina Rojas </div>
