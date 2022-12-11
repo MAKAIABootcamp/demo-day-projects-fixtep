@@ -1,14 +1,14 @@
 <h2>Este proyecto fue desarrollado con: </h2>
-<span>- ReactJS </span>
-<span>- React Router Dom </span>
-<span>- React-Redux </span>
-<span>- React Bootstrap </span>
-<span>- Sass </span>
-<span>- Firebase </span>
-<span>- Firestore </span>
-<span>- Yup </span>
-<span>- Sweetalert2 </span>
-<span>- LottieFiles </span>
+- ReactJS 
+- React Router Dom 
+- React-Redux 
+- React Bootstrap 
+- Sass 
+- Firebase 
+- Firestore 
+- Yup 
+- Sweetalert2 
+- LottieFiles 
 
 <h2>Instalación </h2>
 <h3>Clonar repositorio: </h3>
