@@ -19,9 +19,9 @@ const Router = () => {
   const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
-  const userLogin =
-    sessionStorage.getItem("user") &&
-    JSON.parse(sessionStorage.getItem("user"));
+  // const userLogin =
+  //   sessionStorage.getItem("user") &&
+  //   JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

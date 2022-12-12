@@ -28,6 +28,15 @@ export const actionRegisterAsync = ({ email, password, name }) => {
           admin: false,
           provider: "emailPassword",
         });
+        sessionStorage.setItem("user", JSON.stringify({
+          id: docRef.id,
+          email,
+          name,
+          accessToken,
+          admin: false,
+          provider: "emailPassword",
+          error: false,
+        }));
         dispatch(
           actionRegisterSync({
             id: docRef.id,

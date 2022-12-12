@@ -10,7 +10,7 @@ const Footer = () => {
       </Nav.Item>
       <Nav.Item >
         <div className='facebook'>
-          <span>Siguenos en:</span>
+          <span>Síguenos en:</span>
           <div className='imgFooter'>
           <img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png" alt="Facebook" />
           <img src='https://i0.wp.com/eltallerdehector.com/wp-content/uploads/2022/06/cd939-logo-instagram-png.png?fit=512%2C512&ssl=1' alt='Instagram'/>
@@ -19,7 +19,7 @@ const Footer = () => {
       </Nav.Item>
       <Nav.Item >
         <div className='contactos'>
-          <span>Contactanos</span>
+          <span>Contáctanos</span>
          <span>3034567856</span>
          <span>fixtep@gmail.com</span>
           </div>

@@ -16,22 +16,22 @@ const images = require.context("./assets/img", true);
 const DetalleContratista = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
+  const [infoWorker, setInfoWorker] = useState();
+  const [infoImg, setInfoImg] = useState();
+  const contratista = useSelector((store) => store.contratistaStore);
+  const imgTrabajos = useSelector((store) => store.imagenes);
+  console.log(imgTrabajos);
+
+  useEffect(() => {
+    dispatch(actionGetTrabajosAsync());
+  }, [dispatch]);
+
   useEffect(() => {
     getWorkerInfo();
     getImgTrabajos();
   }, []);
 
-  const dataTrabajos = sessionStorage.getItem("trabajos")
-    && JSON.parse(sessionStorage.getItem("trabajos"));
-    console.log(dataTrabajos);
-  useEffect(() => {
-    dispatch(actionGetTrabajosAsync());
-  }, [dispatch]);
 
-  const [infoWorker, setInfoWorker] = useState();
-  const contratista = useSelector((store) => store.contratistaStore);
-  const imgTrabajos = useSelector((store) => store.imagenes);
-  console.log(imgTrabajos);
 
   const getWorkerInfo = () => {
     const workerData = contratista.contratista.slice();
@@ -40,13 +40,16 @@ const DetalleContratista = () => {
     );
     setInfoWorker(tempWorker);
   };
-  const [infoImg, setInfoImg] = useState();
+
   const getImgTrabajos = () => {
-    const imgData = imgTrabajos.trabajo.slice();
-    const img = imgData.find(
-      (imgTrabajos) => imgTrabajos.name === name
-    );
-    setInfoImg(img);
+    
+      const imgData = imgTrabajos.trabajo.slice();
+      const img = imgData.find(
+        (imgTrabajos) => imgTrabajos.name === name
+      );
+      setInfoImg(img);
+    
+
   };
   const [show, setShow] = useState(false);
 
@@ -66,20 +69,21 @@ const DetalleContratista = () => {
               <Button variant="primary" onClick={handleShow}>
                 Agendar cita
               </Button>
-              <Cita isShow={show} onClose={handleClose} isWorker={infoWorker}/>
-              
+              <Cita isShow={show} onClose={handleClose} isWorker={infoWorker} />
+
             </div>
           </article>
         ) : (
           <div>no haz seleccionado un contratista</div>
         )}
+        <span className="textTrabajos">Algunos trabajos realizados</span>
         {infoImg ? (
-            <div className="trabajos">
-             <img src={infoImg.image1} />
-             <img src={infoImg.image2} />
-             <img src={infoImg.image3} />
-             </div>
-        ):(<></>)}
+          <div className="trabajos">
+            <img src={infoImg.image1} />
+            <img src={infoImg.image2} />
+            <img src={infoImg.image3} />
+          </div>
+        ) : (<></>)}
         {/* <div className="details__work">
           <Card style={{ width: "14rem", height: "50%" }}>
             <Card.Img variant="top" src={images(`./trabajo1.jpg`)} />
