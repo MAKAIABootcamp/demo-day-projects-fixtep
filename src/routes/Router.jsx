@@ -57,7 +57,7 @@ const Router = () => {
 
   return (
     <BrowserRouter>
-      <HeaderNav isAutentication={isLoggedIn} isAdmin={userLogin} />
+      <HeaderNav isAutentication={isLoggedIn} isAdmin={userStore} />
       <Routes>
         <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />
