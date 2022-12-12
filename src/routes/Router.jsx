@@ -3,15 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AddWorker from "../components/admin/AddWorker";
-import DeleteEditWorker from "../components/admin/DeleteEditWorker";
-import Contratistas from "../components/contratistas/Contratistas";
-import DetalleContratista from "../components/contratistas/DetalleContratista";
 import Footer from "../components/home/Footer";
 import HeaderNav from "../components/home/HeaderNav";
 import Home from "../components/home/Home";
-import LoginAdmin from "../components/LoginAdmin";
-import Login from "../components/loginAndRegis/Login";
 import Register from "../components/loginAndRegis/Register";
 import { auth } from "../firebase/firebaseConfig";
 import { actionLoginAsync } from "../redux/actions/usersAction";
@@ -28,16 +22,6 @@ const Router = () => {
   const userLogin =
     sessionStorage.getItem("user") &&
     JSON.parse(sessionStorage.getItem("user"));
-    // const [btnAdmin, setBtnAdmin] = useState(false);
-  
-    // if (userLogin.admin === true){
-    //   console.log('es admin')
-    //   setBtnAdmin(true);
-
-    // } else{
-    //   console.log('no es admin');
-    //   // navigate('/contratistas')
-    // }
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -70,31 +54,19 @@ const Router = () => {
       </Spinner>
     );
   }
-  
-  
+
   return (
     <BrowserRouter>
       <HeaderNav isAutentication={isLoggedIn} isAdmin={userLogin} />
       <Routes>
         <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/" element={<Home />} />
         </Route>
 
-        {/* <Route path="/details/:name" element={<DetalleContratista />} /> */}
-        {/* <Route path="/contratistas" element={<Contratistas isAutentication={isLoggedIn}/>} /> */}
-        {/* <Route path="/loginAdmin" element={<LoginAdmin />} /> */}
         <Route element={<PrivateRouter isAutentication={isLoggedIn} />}>
           <Route path="/*" element={<DashBoardRouter />} />
         </Route>
-        {/* <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> */}
-        {/* <Route path="/agregarContratista" element={<AddWorker />} />
-        <Route
-          path="/eliminarEditarContratistas"
-          element={<DeleteEditWorker />}
-        /> */}
       </Routes>
       <Footer />
     </BrowserRouter>
