@@ -18,7 +18,7 @@ import {
   loginProviderAsync,
 } from "../../redux/actions/usersAction";
 import { loginProvider } from "../../services/data";
-
+import logo from "./assets/fixtepGrande.svg";
 import logo2 from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
 
@@ -33,7 +33,10 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
       password: "",
     },
   });
-  const { error, errorMessage } = useSelector((store) => store.userStore);
+  const { error, errorMessage } = useSelector((store) => store.user);
+  const userLogin = sessionStorage.getItem("user")
+  ? JSON.parse(sessionStorage.getItem("user"))
+  : false;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,14 +55,15 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
     dispatch(actionLogoutAsync());
     navigate("/");
   };
+ 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleLoginGoogle = (provider) => {
-    dispatch(loginProviderAsync(provider));
-  };
+    dispatch(loginProviderAsync(provider))
+  }
 
   return (
     <Navbar className="Nav" expand="lg">
@@ -71,13 +75,14 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+           
             {isAutentication ? (
               <>
                 <NavLink to="/contratistas" className="navLink">
                   Servicios
                 </NavLink>
-                {isAdmin ? (
-                  <NavLink to="/loginAdmin" className="navLink">
+                {isAdmin.admin ? (
+                  <NavLink  to="/loginAdmin" className="navLink">
                     Administrador
                   </NavLink>
                 ) : (
