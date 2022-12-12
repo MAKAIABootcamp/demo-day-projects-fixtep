@@ -30,10 +30,6 @@ const Login = () => {
     },
   });
   const { error, errorMessage } = useSelector((store) => store.user);
-
-  // const userSesion = sessionStorage.setItem("user", user);
-  // console.log(userSesion)
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmit = (data) => {

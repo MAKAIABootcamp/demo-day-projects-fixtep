@@ -11,9 +11,7 @@ import {
 } from "../../redux/actions/workerAction";
 import { categoryWorker } from "../../services/data";
 import "./contratistas.scss";
-// https://previews.123rf.com/images/dolgachov/dolgachov1610/dolgachov161012005/64860816-profesi%C3%B3n-carpinter%C3%ADa-ebanister%C3%ADa-y-el-concepto-de-la-gente-carpintero-con-tablones-de-madera-martil.jpg
 
-// import Lottie from "react-lottie";
 import animationData from "../../lotties/plumber.json";
 
 const Contratistas = () => {

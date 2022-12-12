@@ -1,27 +1,24 @@
-import React from 'react';
-import Modal from "react-bootstrap/Modal";
-import { Form, FloatingLabel } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import InputGroup from 'react-bootstrap/InputGroup';
-import { citaList, time } from "../../services/data";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { actionAddCitaAsync } from '../../redux/actions/citasAction';
-import Swal from 'sweetalert2';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
+import React from "react";
+import { FloatingLabel, Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import * as yup from "yup";
+import { actionAddCitaAsync } from "../../redux/actions/citasAction";
+import { citaList, time } from "../../services/data";
 
 const Cita = ({ isShow, onClose, isWorker }) => {
   const { contratista } = useSelector((store) => store.contratistaStore);
   console.log(contratista);
-  const userLogin = sessionStorage.getItem("user")
-    && JSON.parse(sessionStorage.getItem("user"));
+  const userLogin =
+    sessionStorage.getItem("user") &&
+    JSON.parse(sessionStorage.getItem("user"));
   const schema = yup.object({
-    //date: yup.date().required("Debe seleccionar una fecha"),
-    time: yup
-      .string()
-      .required("Debe seleccionar una hora"),
+    time: yup.string().required("Debe seleccionar una hora"),
     phone: yup.string().required("Debe ingresar su celular"),
     direction: yup.string().required("Debe ingresar su direccion"),
   });
@@ -45,16 +42,12 @@ const Cita = ({ isShow, onClose, isWorker }) => {
       phone: data.phone,
       address: data.direction,
       workerName: isWorker.name,
-      profession: isWorker.profession
+      profession: isWorker.profession,
     };
     console.log(newCita);
     dispatch(actionAddCitaAsync(newCita));
-    Swal.fire(
-        "Se ha agendado la cita",
-        "success"
-      )      
+    Swal.fire("Se ha agendado la cita", "success");
     navigate("/contratistas");
-
   };
 
   return (
@@ -65,11 +58,20 @@ const Cita = ({ isShow, onClose, isWorker }) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <input className='date' type="date" name='date' {...register('date')}/>
+            <input
+              className="date"
+              type="date"
+              name="date"
+              {...register("date")}
+            />
             {citaList.map((item, index) => {
               if (item.type === "select") {
                 return (
-                  <FloatingLabel key={index} label={item.label} className="mb-3">
+                  <FloatingLabel
+                    key={index}
+                    label={item.label}
+                    className="mb-3"
+                  >
                     <Form.Select
                       aria-label="Default select example"
                       {...register(item.name)}
@@ -91,7 +93,11 @@ const Cita = ({ isShow, onClose, isWorker }) => {
               }
               if (item.type === "textarea") {
                 return (
-                  <FloatingLabel key={index} label={item.label} className="mb-3">
+                  <FloatingLabel
+                    key={index}
+                    label={item.label}
+                    className="mb-3"
+                  >
                     <Form.Control as="textarea" {...register(item.name)} />
                     <p>{errors[item.name]?.message}</p>
                   </FloatingLabel>
@@ -105,7 +111,7 @@ const Cita = ({ isShow, onClose, isWorker }) => {
         </Modal.Body>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Cita
+export default Cita;

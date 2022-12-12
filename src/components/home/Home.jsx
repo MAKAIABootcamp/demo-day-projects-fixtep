@@ -63,9 +63,6 @@ const Home = () => {
         </Carousel>
       </div>
       <div className="mainContainer">
-        {/* <div className="logo">
-          <img src={logo} alt="s" />
-        </div> */}
         <div className="left">
           <h1>¿Qué servicio necesitas?‍</h1>
           <h3>
@@ -94,9 +91,6 @@ const Home = () => {
           <h2>
             Encuentra la <strong>persona ideal</strong> para tu necesidad actual
           </h2>
-          {/* <button>
-            Encuentra nuestros <br /> servicios
-          </button> */}
         </div>
       </div>
     </>
