@@ -1,8 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
-import logo from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
 
 const images = require.context("./assets/img", true);
