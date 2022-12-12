@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { actionRegisterAsync } from "../../redux/actions/usersAction";
 import "./style.scss";

@@ -18,7 +18,7 @@ import {
   loginProviderAsync,
 } from "../../redux/actions/usersAction";
 import { loginProvider } from "../../services/data";
-import logo from "./assets/fixtepGrande.svg";
+
 import logo2 from "./assets/logoConLetrasGrande.svg";
 import "./style.scss";
 
@@ -58,8 +58,8 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
   const handleShow = () => setShow(true);
 
   const handleLoginGoogle = (provider) => {
-    dispatch(loginProviderAsync(provider))
-  }
+    dispatch(loginProviderAsync(provider));
+  };
 
   return (
     <Navbar className="Nav" expand="lg">
@@ -71,7 +71,6 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-           
             {isAutentication ? (
               <>
                 <NavLink to="/contratistas" className="navLink">
