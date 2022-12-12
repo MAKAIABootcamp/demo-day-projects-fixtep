@@ -22,12 +22,22 @@ import PublicRouter from "./PublicRouter";
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const [check, setCheck] = useState(true);
-  const userStore = useSelector((store) => store.userStore);
+  const userStore = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const userLogin =
     sessionStorage.getItem("user") &&
     JSON.parse(sessionStorage.getItem("user"));
+    // const [btnAdmin, setBtnAdmin] = useState(false);
+  
+    // if (userLogin.admin === true){
+    //   console.log('es admin')
+    //   setBtnAdmin(true);
+
+    // } else{
+    //   console.log('no es admin');
+    //   // navigate('/contratistas')
+    // }
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -60,6 +70,8 @@ const Router = () => {
       </Spinner>
     );
   }
+  
+  
   return (
     <BrowserRouter>
       <HeaderNav isAutentication={isLoggedIn} isAdmin={userLogin} />
