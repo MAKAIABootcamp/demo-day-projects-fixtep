@@ -103,32 +103,32 @@ export const actionLoginAsync = ({ email, password }) => {
     };
   };
 
-  export const loginProviderAsync = (provider) => {
-    return (dispatch) => {
-        signInWithPopup(auth, provider)
-        .then((result) =>{
-            const user = result.user;
-            console.log(user)
-            const {displayName, accessToken, photoURL, phoneNumber} = user.auth.currentUser;
-            //console.log(result.user);
-            dispatch(actionLoginSync({
-                email: user.email,
-                name: displayName,
-                accessToken,
-                avatar: photoURL,
-                phoneNumber,
-                error: false
-            }))
-        })
-        .catch((error) =>{
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            const email = error.customData.email;
-            console.log(error);
-            console.log(errorCode);
-            console.log(errorMessage);
-            dispatch(actionLoginSync({ email, error: true, errorMessage }))
-        })
-    }
-}
+//   export const loginProviderAsync = (provider) => {
+//     return (dispatch) => {
+//         signInWithPopup(auth, provider)
+//         .then((result) =>{
+//             const user = result.user;
+//             console.log(user)
+//             const {displayName, accessToken, photoURL, phoneNumber} = user.auth.currentUser;
+//             //console.log(result.user);
+//             dispatch(actionLoginSync({
+//                 email: user.email,
+//                 name: displayName,
+//                 accessToken,
+//                 avatar: photoURL,
+//                 phoneNumber,
+//                 error: false
+//             }))
+//         })
+//         .catch((error) =>{
+//             const errorCode = error.code;
+//             const errorMessage = error.message;
+//             const email = error.customData.email;
+//             console.log(error);
+//             console.log(errorCode);
+//             console.log(errorMessage);
+//             dispatch(actionLoginSync({ email, error: true, errorMessage }))
+//         })
+//     }
+// }
   

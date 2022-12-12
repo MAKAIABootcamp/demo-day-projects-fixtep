@@ -61,9 +61,9 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleLoginGoogle = (provider) => {
-    dispatch(loginProviderAsync(provider))
-  }
+  // const handleLoginGoogle = (provider) => {
+  //   dispatch(loginProviderAsync(provider))
+  // }
 
   return (
     <Navbar className="Nav" expand="lg">
@@ -142,7 +142,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                         >
                           Inicia sesión
                         </Button>
-                        {loginProvider.map((provider, index) => (
+                        {/* {loginProvider.map((provider, index) => (
                           <img
                             key={index}
                             src={provider.image}
@@ -152,7 +152,7 @@ const HeaderNav = ({ isAutentication, isAdmin }) => {
                               handleLoginGoogle(provider.provider);
                             }}
                           />
-                        ))}
+                        ))} */}
                       </Form>
                     </Modal.Body>
                   </Modal>

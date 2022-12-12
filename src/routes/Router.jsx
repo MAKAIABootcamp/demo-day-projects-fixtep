@@ -78,7 +78,7 @@ const Router = () => {
       <Routes>
         <Route element={<PublicRouter isAutentication={isLoggedIn} />}>
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/" element={<Home />} />
         </Route>
 
