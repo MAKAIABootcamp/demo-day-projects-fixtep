@@ -73,13 +73,7 @@ export const loginProvider = [
     image:
       "https://play-lh.googleusercontent.com/aFWiT2lTa9CYBpyPjfgfNHd0r5puwKRGj2rHpdPTNrz2N9LXgN_MbLjePd1OTc0E8Rl1",
     provider: google,
-  },
-  {
-    name: "facebook",
-    image:
-      "https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png",
-    provider: facebook,
-  },
+  }
 ];
 
 export const time = [
